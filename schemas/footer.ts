@@ -55,6 +55,13 @@ export default defineType({
       type: 'array',
       of: [{type: 'social'}],
     }),
+    defineField({
+      name: 'siteMap',
+      title: 'Site Map',
+      type: 'array',
+      of: [{type: 'link'}],
+      validation: (rule: any) => rule.required(),
+    }),
   ],
   preview: {
     prepare() {
