@@ -7,11 +7,13 @@ import menuItem from './menuItem'
 import address from './address'
 import social from './social'
 import link from './link'
+import page from './page'
 
 export const schemaTypes = [
   settings,
   header,
   footer,
+  page,
   redirect,
   menu,
   menuItem,
