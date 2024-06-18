@@ -11,22 +11,11 @@ export default defineType({
   options: {
     singleton: true,
   },
-  groups: [
-    {
-      name: 'alert',
-      title: 'Alert',
-    },
-    {
-      name: 'navigation',
-      title: 'Navigation',
-    },
-  ],
   fields: [
     defineField({
       name: 'showAlert',
       title: 'Show Alert',
       type: 'boolean',
-      group: 'alert',
     }),
     defineField({
       name: 'alertMessage',
@@ -34,7 +23,6 @@ export default defineType({
       type: 'array',
       of: [defineArrayMember(createRichTextBlock(['decorators', 'links']))],
       hidden: ({document}) => !document?.showAlert,
-      group: 'alert',
     }),
     defineField({
       name: 'logo',
@@ -49,14 +37,12 @@ export default defineType({
           validation: (rule: any) => rule.required(),
         }),
       ],
-      group: 'navigation',
     }),
     defineField({
       name: 'menuButtons',
       title: 'Menu Buttons',
       type: 'array',
       of: [defineArrayMember({type: 'menuButton'})],
-      group: 'navigation',
     }),
   ],
   preview: {
