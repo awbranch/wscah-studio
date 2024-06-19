@@ -41,3 +41,17 @@ export const highlightColors = [
     background: "#6E932C",
   },
 ];
+
+export const pageWidths = [
+  { title: "Large", value: "lg" },
+  { title: "Medium", value: "md" },
+  { title: "Small", value: "sm" },
+  { title: "Extra Small", value: "xs" },
+];
+
+export const verticalSpacing = [
+  { title: "Extra Small", value: "xs" },
+  { title: "Small", value: "sm" },
+  { title: "Medium", value: "md" },
+  { title: "Large", value: "lg" },
+];

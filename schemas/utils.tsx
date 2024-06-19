@@ -8,7 +8,7 @@ import {
 } from "sanity";
 import { PiHighlighterFill } from "react-icons/pi";
 import { FaLightbulb } from "react-icons/fa6";
-import { colorPalettes, highlightColors } from "./globals";
+import { colorPalettes, highlightColors, pageWidths, verticalSpacing } from "./globals";
 import { getExtension } from "@sanity/asset-utils";
 
 export function createImageField(name: string, title: string, group?: string, caption?: boolean) {
@@ -50,7 +50,8 @@ export type TextConfig = {
   all?: boolean;
   h1?: boolean;
   h2?: boolean;
-  subtitle?: boolean;
+  h3?: boolean;
+  large?: boolean;
   small?: boolean;
   blockquote?: boolean;
   lists?: boolean;
@@ -72,13 +73,15 @@ export function createRichTextBlock(config: TextConfig = {}) {
     styles.push({ title: "Heading 2", value: "h2" });
   }
 
-  if (config.all || config.subtitle) {
+  if (config.all || config.h3) {
+    styles.push({ title: "Heading 3", value: "h3" });
+  }
+
+  if (config.all || config.large) {
     styles.push({
-      title: "Subtitle",
-      value: "subtitle",
-      component: ({ children }) => (
-        <span style={{ fontSize: "1.2rem", opacity: "0.8" }}>{children}</span>
-      ),
+      title: "Large",
+      value: "large",
+      component: ({ children }) => <span style={{ fontSize: "1.2rem" }}>{children}</span>,
     });
   }
 
@@ -130,6 +133,7 @@ export function createRichTextBlock(config: TextConfig = {}) {
       name: "link",
       type: "object",
       title: "Link",
+      rows: 4,
       fields: [
         {
           name: "href",
@@ -215,4 +219,31 @@ export function createNoteField(description: string) {
       tone: "caution",
     },
   });
+}
+
+export function createStockComponentFields() {
+  return [
+    // defineField({
+    //   name: "maxWidth",
+    //   title: "Max Width",
+    //   description:
+    //     "The optional maximum width this component is displayed on the page. If not set it will use the max width of the page.",
+    //   type: "string",
+    //   options: {
+    //     list: pageWidths,
+    //     layout: "dropdown",
+    //   },
+    // }),
+    // defineField({
+    //   name: "spacing",
+    //   title: "Spacing",
+    //   description:
+    //     "The optional vertical spacing between this component the components above and below it. If not set it will use the component spacing of the block or page.",
+    //   type: "string",
+    //   options: {
+    //     list: verticalSpacing,
+    //     layout: "dropdown",
+    //   },
+    // }),
+  ];
 }

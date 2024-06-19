@@ -1,12 +1,6 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import { FaFile as icon } from "react-icons/fa";
-
-const pageWidths = [
-  { title: "Large", value: "lg" },
-  { title: "Medium", value: "md" },
-  { title: "Small", value: "sm" },
-  { title: "Extra Small", value: "xs" },
-];
+import { pageWidths } from "./globals";
 
 export default defineType({
   name: "page",
@@ -50,19 +44,13 @@ export default defineType({
       title: "Max Width",
       name: "maxWidth",
       type: "string",
-      initialValue: "md",
+      description:
+        "The optional maximum width of this page. " +
+        "Narrower widths are ideal for text heavy pages to avoid long line lengths.",
       options: {
         list: pageWidths,
-        layout: "radio",
-        direction: "horizontal",
+        layout: "dropdown",
       },
-      validation: (rule: any) => rule.required(),
-    }),
-    defineField({
-      name: "blocks",
-      title: "Blocks",
-      type: "array",
-      of: [defineArrayMember({ type: "pageBlock" })],
     }),
     defineField({
       name: "description",
@@ -70,6 +58,13 @@ export default defineType({
       type: "text",
       description:
         "This description is not displayed to the user. Instead this is a concise summary of the pages for search engines to help index the page.",
+      rows: 5,
+    }),
+    defineField({
+      name: "blocks",
+      title: "Blocks",
+      type: "array",
+      of: [defineArrayMember({ type: "pageBlock" })],
     }),
   ],
   preview: {

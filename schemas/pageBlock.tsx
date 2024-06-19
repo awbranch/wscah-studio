@@ -1,8 +1,8 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import BlockPreview from "../components/BlockPreview";
 import components from "./components";
-import { createPaletteField } from "../utils/utils";
-import { colorPalettes } from "../utils/globals";
+import { createPaletteField } from "./utils";
+import { colorPalettes, pageWidths, verticalSpacing } from "./globals";
 
 export default defineType({
   name: "pageBlock",
@@ -26,6 +26,29 @@ export default defineType({
       validation: (rule: any) => rule.required(),
     }),
     createPaletteField("palette", "Palette"),
+    defineField({
+      name: "maxWidth",
+      title: "Max Width",
+      description:
+        "The optional maximum width of this block. If not set it will stretch to fill the page. " +
+        "Narrower widths are ideal for text heavy blocks to avoid long line lengths.",
+      type: "string",
+      options: {
+        list: pageWidths,
+        layout: "dropdown",
+      },
+    }),
+    defineField({
+      name: "spacing",
+      title: "Component Spacing",
+      description:
+        "The optional spacing between components in this block. If not set it will use the default spacing.",
+      type: "string",
+      options: {
+        list: verticalSpacing,
+        layout: "dropdown",
+      },
+    }),
     defineField({
       name: "components",
       title: "Components",

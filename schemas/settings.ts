@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
-import { validateRasterImageTypes } from "../utils/utils.jsx";
+import { validateRasterImageTypes } from "./utils.jsx";
 
 import { FaGear as icon } from "react-icons/fa6";
 

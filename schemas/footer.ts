@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
-import { createRichTextBlock, validateVectorImageType } from "../utils/utils";
+import { createRichTextBlock, validateVectorImageType } from "./utils";
 
 import { FaWindowMinimize } from "react-icons/fa";
 

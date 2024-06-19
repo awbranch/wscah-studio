@@ -1,5 +1,5 @@
 import { defineType } from "sanity";
-import { createImageField } from "../utils/utils";
+import { createImageField } from "./utils";
 import { IoIosImages } from "react-icons/io";
 
 export default defineType({

@@ -1,17 +1,12 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import {
-  createImageField,
-  createRichTextBlock,
-  createNoteField,
-  getFirstBlockText,
-} from "../utils/utils";
-import { FaCircleExclamation } from "react-icons/fa6";
+import { createRichTextBlock, createNoteField, getFirstBlockText } from "./utils";
+import { GiStrong } from "react-icons/gi";
 
 export default defineType({
   name: "hero",
   title: "Hero",
   type: "object",
-  icon: FaCircleExclamation,
+  icon: GiStrong,
   description: "Displays a large image and text that typically appears at the top of a webpage.",
   fields: [
     createNoteField(
@@ -55,11 +50,11 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { text: "text", image: "image" },
-    prepare({ text, image }) {
+    select: { title: "title", image: "image" },
+    prepare({ title, image }) {
       return {
         title: "Hero",
-        subtitle: getFirstBlockText(text),
+        subtitle: getFirstBlockText(title),
         media: image,
       };
     },
