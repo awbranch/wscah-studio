@@ -10,8 +10,23 @@ import { PiHighlighterFill } from "react-icons/pi";
 import { FaLightbulb } from "react-icons/fa6";
 import { colorPalettes, highlightColors, pageWidths, verticalSpacing } from "./globals";
 import { getExtension } from "@sanity/asset-utils";
+import { IconType } from "react-icons";
 
-export function createImageField(name: string, title: string, group?: string, caption?: boolean) {
+type CreateImageFieldConfig = {
+  name: string;
+  title: string;
+  group?: string;
+  caption?: boolean;
+  required?: boolean;
+};
+
+export function createImageField({
+  name,
+  title,
+  group,
+  caption,
+  required,
+}: CreateImageFieldConfig) {
   const field = defineField({
     name,
     title,
@@ -29,7 +44,7 @@ export function createImageField(name: string, title: string, group?: string, ca
         validation: (rule: any) => rule.required(),
       }),
     ],
-    validation: (rule: any) => rule.required().assetRequired(),
+    validation: required ? (rule: any) => rule.required().assetRequired() : undefined,
   });
 
   if (caption && field.fields) {
@@ -46,7 +61,7 @@ export function createImageField(name: string, title: string, group?: string, ca
   return field;
 }
 
-export type TextConfig = {
+export type CreateRichTextBlockConfig = {
   all?: boolean;
   h1?: boolean;
   h2?: boolean;
@@ -59,7 +74,7 @@ export type TextConfig = {
   highlighters?: boolean;
   links?: boolean;
 };
-export function createRichTextBlock(config: TextConfig = {}) {
+export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
   const styles: BlockStyleDefinition[] = [];
   const lists: BlockListDefinition[] = [];
   const decorators: BlockDecoratorDefinition[] = [];
@@ -167,12 +182,19 @@ export function getFirstBlockText(portableText: PortableTextBlock[]): string {
     ?.join("");
 }
 
-export function createPaletteField(name: string, title: string, group?: string) {
+type CreatePaletteFieldConfig = {
+  name: string;
+  title: string;
+  group?: string;
+  description?: string;
+};
+export function createPaletteField({ name, title, group, description }: CreatePaletteFieldConfig) {
   return defineField({
     name,
     title,
     group,
     type: "string",
+    description: description,
     options: {
       list: colorPalettes.map((c) => ({ title: c.title, value: c.value })),
       layout: "dropdown",
@@ -208,14 +230,14 @@ export function validateRasterImageTypes(value: Image) {
   return true;
 }
 
-export function createNoteField(description: string) {
+export function createNoteField(icon: IconType, description: string) {
   return defineField({
     title: "Tip",
     description,
     name: "tip",
     type: "note",
     options: {
-      icon: FaLightbulb,
+      icon: icon,
       tone: "caution",
     },
   });

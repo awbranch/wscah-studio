@@ -1,4 +1,3 @@
-import components from "./components";
 import settings from "./settings";
 import header from "./header";
 import footer from "./footer";
@@ -12,9 +11,15 @@ import page from "./page";
 import button from "./button";
 import pageBlock from "./pageBlock";
 import carouselImage from "./carouselmage";
+import mediaCardSet from "./mediaCardSet";
+import imageCard from "./imageCard";
+import iconCard from "./iconCard";
+import titleCard from "./titleCard";
+import hero from "./hero";
+import text from "./text";
+import iframe from "./iframe";
 
 export const schemaTypes = [
-  ...components,
   settings,
   header,
   footer,
@@ -28,4 +33,11 @@ export const schemaTypes = [
   pageBlock,
   button,
   carouselImage,
+  mediaCardSet,
+  imageCard,
+  iconCard,
+  titleCard,
+  text,
+  hero,
+  iframe,
 ];

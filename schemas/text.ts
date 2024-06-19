@@ -4,32 +4,38 @@ import {
   createRichTextBlock,
   getFirstBlockText,
   createStockComponentFields,
+  createNoteField,
 } from "./utils.js";
-import { FaRegFileAlt as icon } from "react-icons/fa";
+
+import { alignment } from "./globals.js";
+
+import { FaRegFileAlt } from "react-icons/fa";
 
 export default defineType({
   name: "richText",
   title: "Text",
   type: "object",
-  icon,
-  description: "A rich text component with embedded images.",
+  icon: FaRegFileAlt,
   fields: [
+    createNoteField(
+      FaRegFileAlt,
+      "A text component can contain rich text such as headers, paragraphs, hyperlinks, bulleted lists and images.",
+    ),
     defineField({
       name: "text",
       title: "Text",
       type: "array",
-      of: [createRichTextBlock({ all: true }), createImageField("image", "Image", undefined, true)],
+      of: [
+        createRichTextBlock({ all: true }),
+        createImageField({ name: "image", title: "Image", caption: true }),
+      ],
     }),
     defineField({
       name: "alignment",
       title: "Alignment",
       type: "string",
       options: {
-        list: [
-          { title: "Left", value: "left" },
-          { title: "Center", value: "center" },
-          { title: "Right", value: "right" },
-        ],
+        list: alignment,
         layout: "dropdown",
       },
       initialValue: "left",

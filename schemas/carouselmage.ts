@@ -8,7 +8,7 @@ export default defineType({
   type: "object",
   icon: IoIosImages,
   description: "An image that appears in a carousel.",
-  fields: [createImageField("image", "Image")],
+  fields: [createImageField({ name: "image", title: "Image", required: true })],
   preview: {
     select: { image: "image" },
     prepare({ image }) {

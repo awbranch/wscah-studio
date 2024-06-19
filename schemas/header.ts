@@ -1,6 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import { createRichTextBlock, validateVectorImageType } from "./utils";
-
 import { FaWindowMaximize as icon } from "react-icons/fa";
 
 export default defineType({

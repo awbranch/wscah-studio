@@ -1,14 +1,20 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import BlockPreview from "../components/BlockPreview";
-import components from "./components";
-import { createPaletteField } from "./utils";
+import { createPaletteField, createNoteField } from "./utils";
 import { colorPalettes, pageWidths, verticalSpacing } from "./globals";
+import { LuRectangleHorizontal } from "react-icons/lu";
 
 export default defineType({
   name: "pageBlock",
   title: "Block",
   type: "object",
   fields: [
+    createNoteField(
+      LuRectangleHorizontal,
+      "A block is a large section on a webpage that can have a background color and one or more components. " +
+        "Blocks can be directly linked to by adding a hashmark and block id to the end of the url. " +
+        "For example clicking on the url https://mysite.org/about#team will take the user to the block with the id 'team' on the about page.",
+    ),
     defineField({
       name: "id",
       title: "ID",
@@ -25,7 +31,7 @@ export default defineType({
       initialValue: false,
       validation: (rule: any) => rule.required(),
     }),
-    createPaletteField("palette", "Palette"),
+    createPaletteField({ name: "palette", title: "Palette" }),
     defineField({
       name: "maxWidth",
       title: "Max Width",
@@ -53,7 +59,12 @@ export default defineType({
       name: "components",
       title: "Components",
       type: "array",
-      of: components.map((c) => defineArrayMember({ type: c.name })),
+      of: [
+        defineArrayMember({ type: "richText" }),
+        defineArrayMember({ type: "mediaCardSet" }),
+        defineArrayMember({ type: "hero" }),
+        defineArrayMember({ type: "iframe" }),
+      ],
     }),
   ],
   preview: {

@@ -1,6 +1,7 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import { FaFile as icon } from "react-icons/fa";
 import { pageWidths } from "./globals";
+import { createNoteField } from "./utils";
 
 export default defineType({
   name: "page",
@@ -8,6 +9,10 @@ export default defineType({
   type: "document",
   icon,
   fields: [
+    createNoteField(
+      icon,
+      "Each page of the site has a unique path that is separated by slashes and contains one or more blocks.",
+    ),
     defineField({
       name: "path",
       title: "Path",

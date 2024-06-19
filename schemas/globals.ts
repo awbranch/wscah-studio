@@ -55,3 +55,9 @@ export const verticalSpacing = [
   { title: "Medium", value: "md" },
   { title: "Large", value: "lg" },
 ];
+
+export const alignment = [
+  { title: "Left", value: "left" },
+  { title: "Center", value: "center" },
+  { title: "Right", value: "right" },
+];

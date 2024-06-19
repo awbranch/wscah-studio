@@ -7,9 +7,8 @@ export default defineType({
   title: "Hero",
   type: "object",
   icon: GiStrong,
-  description: "Displays a large image and text that typically appears at the top of a webpage.",
   fields: [
-    createNoteField(
+    createNoteField(GiStrong, 
       "The Hero is a large component that typically sits at the top of the page. It has very large text and a set " +
         "of images and a button. Typically it would be at the top of the homepage and other landing pages",
     ),
