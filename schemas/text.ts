@@ -44,19 +44,19 @@ export default defineType({
     defineField({
       name: "columns",
       title: "Columns",
-      type: "string",
+      type: "number",
       description:
         "Text can flow across multiple columns like a newspaper. When selecting values larger than 1 (the default) the text will be displayed in columns only on wider screens.",
       options: {
         list: [
-          { title: "1 column", value: "1" },
-          { title: "2 columns", value: "2" },
-          { title: "3 columns", value: "3" },
-          { title: "4 columns", value: "4" },
+          { title: "1 column", value: 1 },
+          { title: "2 columns", value: 2 },
+          { title: "3 columns", value: 3 },
+          { title: "4 columns", value: 4 },
         ],
         layout: "dropdown",
       },
-      initialValue: "1",
+      initialValue: 1,
       validation: (rule: any) => rule.required(),
     }),
     ...createStockComponentFields(),

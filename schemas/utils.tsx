@@ -89,7 +89,7 @@ export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
   }
 
   if (config.all || config.h3) {
-    styles.push({ title: "Heading 3", value: "h3" });
+    styles.push({ title: "Eyebrow", value: "h3" });
   }
 
   if (config.all || config.large) {

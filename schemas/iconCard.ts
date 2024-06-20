@@ -1,22 +1,22 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, defineArrayMember } from "sanity";
 import { createNoteField, validateVectorImageType } from "./utils";
-import { BsFileEarmarkEasel } from "react-icons/bs";
-
+import { BsFileMedical } from "react-icons/bs";
 
 export default defineType({
   name: "iconCard",
   title: "Icon Card",
   type: "object",
-  icon: BsFileEarmarkEasel,
+  icon: BsFileMedical,
   fields: [
     createNoteField(
-      BsFileEarmarkEasel,
-      "A portrait shaped card that can displays an icon, text, and a button. These are typically used in a grid.",
+      BsFileMedical,
+      "A portrait shaped card that displays an icon, text, and a button. These are typically used in a grid.",
     ),
     defineField({
       name: "icon",
       title: "Icon",
       type: "image",
+      description: "Use a square SVG icon.",
       validation: (rule: any) => rule.required().assetRequired().custom(validateVectorImageType),
       fields: [
         defineField({
@@ -41,7 +41,9 @@ export default defineType({
     defineField({
       name: "button",
       title: "Button",
-      type: "button",
+      type: "array",
+      of: [defineArrayMember({ type: "button" })],
+      validation: (rule) => rule.max(1),
     }),
     defineField({
       name: "href",

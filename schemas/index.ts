@@ -15,9 +15,12 @@ import mediaCardSet from "./mediaCardSet";
 import imageCard from "./imageCard";
 import iconCard from "./iconCard";
 import titleCard from "./titleCard";
+import dataCard from "./dataCard";
 import hero from "./hero";
 import text from "./text";
 import iframe from "./iframe";
+import dataPoint from "./dataPoint";
+import announcement from "./announcement";
 
 export const schemaTypes = [
   settings,
@@ -37,7 +40,10 @@ export const schemaTypes = [
   imageCard,
   iconCard,
   titleCard,
+  dataCard,
   text,
   hero,
   iframe,
+  dataPoint,
+  announcement
 ];

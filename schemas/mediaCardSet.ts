@@ -26,6 +26,7 @@ export default defineType({
         defineArrayMember({ type: "imageCard" }),
         defineArrayMember({ type: "iconCard" }),
         defineArrayMember({ type: "titleCard" }),
+        defineArrayMember({ type: "dataCard" }),
       ],
     }),
   ],

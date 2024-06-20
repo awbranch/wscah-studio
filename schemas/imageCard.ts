@@ -1,15 +1,15 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, defineArrayMember } from "sanity";
 import { createNoteField, createPaletteField, createImageField } from "./utils";
-import { BsFileEarmarkImage } from "react-icons/bs";
+import { BsFileRichtext } from "react-icons/bs";
 
 export default defineType({
   name: "imageCard",
   title: "Image Card",
   type: "object",
-  icon: BsFileEarmarkImage,
+  icon: BsFileRichtext,
   fields: [
     createNoteField(
-      BsFileEarmarkImage,
+      BsFileRichtext,
       "A portrait shaped card that can displays an image, text, and a button. These are typically used in a grid.",
     ),
     createImageField({ name: "image", title: "Image", required: true }),
@@ -27,7 +27,9 @@ export default defineType({
     defineField({
       name: "button",
       title: "Button",
-      type: "button",
+      type: "array",
+      of: [defineArrayMember({ type: "button" })],
+      validation: (rule) => rule.max(1),
     }),
     defineField({
       name: "href",

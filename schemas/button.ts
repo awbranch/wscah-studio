@@ -38,6 +38,8 @@ export default defineType({
         layout: "radio",
         direction: "horizontal",
       },
+      initialValue: "none",
+      validation: (rule: any) => rule.required(),
     }),
 
     defineField({
@@ -63,7 +65,7 @@ export default defineType({
     },
     prepare({ label, link, style }) {
       return {
-        title: `${label || ""} - (${style || ""})`,
+        title: `Button: ${label || ""} - (${style || ""})`,
         subtitle: link,
         icon: icon,
       };

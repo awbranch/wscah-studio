@@ -62,6 +62,7 @@ export default defineType({
       of: [
         defineArrayMember({ type: "richText" }),
         defineArrayMember({ type: "mediaCardSet" }),
+        defineArrayMember({ type: "announcement" }),
         defineArrayMember({ type: "hero" }),
         defineArrayMember({ type: "iframe" }),
       ],

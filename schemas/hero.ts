@@ -1,14 +1,15 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 import { createRichTextBlock, createNoteField, getFirstBlockText } from "./utils";
-import { GiStrong } from "react-icons/gi";
+import { GiSpiderMask } from "react-icons/gi";
 
 export default defineType({
   name: "hero",
   title: "Hero",
   type: "object",
-  icon: GiStrong,
+  icon: GiSpiderMask,
   fields: [
-    createNoteField(GiStrong, 
+    createNoteField(
+      GiSpiderMask,
       "The Hero is a large component that typically sits at the top of the page. It has very large text and a set " +
         "of images and a button. Typically it would be at the top of the homepage and other landing pages",
     ),
@@ -23,9 +24,8 @@ export default defineType({
     defineField({
       name: "subtitle",
       title: "Subtitle",
-      type: "array",
+      type: "text",
       description: "An optional secondary heading for the hero section.",
-      of: [createRichTextBlock()],
     }),
     defineField({
       name: "images",
@@ -37,8 +37,9 @@ export default defineType({
     defineField({
       name: "button",
       title: "Button",
-      type: "button",
-      validation: (rule: any) => rule.required(),
+      type: "array",
+      of: [defineArrayMember({ type: "button" })],
+      validation: (rule) => rule.max(1),
     }),
     defineField({
       name: "text",
