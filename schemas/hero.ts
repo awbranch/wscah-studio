@@ -1,15 +1,15 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { createRichTextBlock, createNoteField, getFirstBlockText } from "./utils";
-import { GiSpiderMask } from "react-icons/gi";
+import { createRichTextBlock, createNoteField, getFirstBlockText, createImageField } from "./utils";
+import { GiStrong as icon } from "react-icons/gi";
 
 export default defineType({
   name: "hero",
   title: "Hero",
   type: "object",
-  icon: GiSpiderMask,
+  icon: icon,
   fields: [
     createNoteField(
-      GiSpiderMask,
+      icon,
       "The Hero is a large component that typically sits at the top of the page. It has very large text and a set " +
         "of images and a button. Typically it would be at the top of the homepage and other landing pages",
     ),
@@ -28,9 +28,25 @@ export default defineType({
       description: "An optional secondary heading for the hero section.",
     }),
     defineField({
+      name: "display",
+      title: "Image Display",
+      type: "string",
+      initialValue: "fan",
+      options: {
+        list: [
+          { title: "Fan Images", value: "fan" },
+          { title: "Single Image", value: "single" },
+        ],
+        layout: "radio",
+        direction: "horizontal",
+      },
+      validation: (rule: any) => rule.required(),
+    }),
+    defineField({
       name: "images",
-      title: "Fan Images",
-      description: "The list of images to display in the image fan.",
+      title: "Images",
+      description:
+        'The list of images to display. If "Image Display" set to "Fan Images" then the first 4 images will be displayed in a fan layout. If "Image Display" set to "Single Image" then only the first image will be displayed.',
       type: "array",
       of: [defineArrayMember({ type: "carouselImage" })],
     }),

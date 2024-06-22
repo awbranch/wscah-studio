@@ -1,5 +1,6 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
-import { FaCircle, FaRegSquare } from "react-icons/fa6";
+import { IoText as textIcon } from "react-icons/io5";
+import { RiRectangleFill as btnIcon } from "react-icons/ri";
 
 const styleList = [
   { title: "Text Button", value: "text" },
@@ -76,9 +77,9 @@ export default defineType({
     },
     prepare({ style, name, href, action }) {
       return {
-        title: name,
-        subtitle: action === "link" ? `go to ${href}` : "display menu",
-        media: style === "text" ? FaRegSquare : FaCircle,
+        title: style === "text" ? "Text Button" : "Rounded Button",
+        subtitle: name,
+        media: style === "text" ? textIcon : btnIcon,
       };
     },
   },

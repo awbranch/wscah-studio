@@ -1,15 +1,15 @@
 import { defineField, defineType } from "sanity";
 import { createRichTextBlock, createNoteField, getFirstBlockText } from "./utils";
-import { BsFileText } from "react-icons/bs";
+import { BsFileText as icon } from "react-icons/bs";
 
 export default defineType({
   name: "titleCard",
   title: "Title Card",
   type: "object",
-  icon: BsFileText,
+  icon,
   fields: [
     createNoteField(
-      BsFileText,
+      icon,
       "A portrait shaped card containing text that can be used as the title in a media card set that only has an odd number of cards.",
     ),
     defineField({
@@ -40,7 +40,7 @@ export default defineType({
       return {
         title: "Title Card",
         subtitle: getFirstBlockText(title),
-        media: BsCardText,
+        media: icon,
       };
     },
   },

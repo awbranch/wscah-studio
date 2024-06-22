@@ -5,6 +5,7 @@ export default defineType({
   name: "link",
   title: "Link",
   type: "object",
+  icon,
   fields: [
     defineField({
       name: "name",
@@ -28,7 +29,7 @@ export default defineType({
       return {
         title: name,
         subtitle: href,
-        icon: icon,
+        media: icon,
       };
     },
   },

@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { FaRegSquare as icon } from "react-icons/fa6";
+import { PiFrameCornersFill as icon } from "react-icons/pi";
 
 export default defineType({
   name: "iframe",

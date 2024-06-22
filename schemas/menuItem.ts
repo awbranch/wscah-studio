@@ -1,6 +1,5 @@
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 import { FaLink, FaMinus } from "react-icons/fa";
-import header from "./header";
 
 export default defineType({
   name: "menuItem",

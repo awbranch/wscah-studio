@@ -8,6 +8,13 @@ export default defineType({
   title: "Pages",
   type: "document",
   icon,
+  fieldsets: [
+    {
+      name: "advanced",
+      title: "Advanced Options",
+      options: { collapsible: true, collapsed: true },
+    },
+  ],
   fields: [
     createNoteField(
       icon,
@@ -46,6 +53,12 @@ export default defineType({
       description: "The page title to be shown in the browser tab and used for SEO.",
     }),
     defineField({
+      name: "blocks",
+      title: "Blocks",
+      type: "array",
+      of: [defineArrayMember({ type: "pageBlock" })],
+    }),
+    defineField({
       title: "Max Width",
       name: "maxWidth",
       type: "string",
@@ -56,6 +69,7 @@ export default defineType({
         list: pageWidths,
         layout: "dropdown",
       },
+      fieldset: "advanced",
     }),
     defineField({
       name: "description",
@@ -64,12 +78,7 @@ export default defineType({
       description:
         "This description is not displayed to the user. Instead this is a concise summary of the pages for search engines to help index the page.",
       rows: 5,
-    }),
-    defineField({
-      name: "blocks",
-      title: "Blocks",
-      type: "array",
-      of: [defineArrayMember({ type: "pageBlock" })],
+      fieldset: "advanced",
     }),
   ],
   preview: {

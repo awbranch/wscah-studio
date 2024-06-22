@@ -67,7 +67,7 @@ export default defineType({
       return {
         title: `Button: ${label || ""} - (${style || ""})`,
         subtitle: link,
-        icon: icon,
+        media: icon,
       };
     },
   },

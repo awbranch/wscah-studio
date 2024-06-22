@@ -1,12 +1,12 @@
 import { defineType } from "sanity";
 import { createImageField } from "./utils";
-import { IoIosImages } from "react-icons/io";
+import { IoIosImages as icon } from "react-icons/io";
 
 export default defineType({
   name: "carouselImage",
   title: "Carousel Image",
   type: "object",
-  icon: IoIosImages,
+  icon,
   description: "An image that appears in a carousel.",
   fields: [createImageField({ name: "image", title: "Image", required: true })],
   preview: {

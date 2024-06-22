@@ -1,32 +1,34 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { createNoteField } from "./utils";
-import { BsMegaphoneFill as icon } from "react-icons/bs";
+import { createRichTextBlock, createNoteField, getFirstBlockText, createImageField } from "./utils";
+import { FaAddressCard as icon } from "react-icons/fa";
 
 export default defineType({
-  name: "announcement",
-  title: "Announcement",
+  name: "callToAction",
+  title: "Call to Action",
   type: "object",
   icon,
   fields: [
     createNoteField(
       icon,
-      "An announcement is a prominent component that that can be used to draw attention to important information.",
+      "A Call to Action (CTA) is a component with an image on one side with a large heading, a subtitle, and button on the other. It typically asks the user to perform some action.",
     ),
     defineField({
-      name: "style",
-      title: "Style",
+      name: "orientation",
+      title: "Orientation",
       type: "string",
-      initialValue: "orange",
       options: {
         list: [
-          { title: "Orange with white text", value: "orange" },
-          { title: "Green with white text", value: "green" },
-          { title: "Blue with white text", value: "blue" },
+          { title: "Image on the Left", value: "left" },
+          { title: "Image on the Right", value: "right" },
         ],
         layout: "dropdown",
       },
+      initialValue: "left",
       validation: (rule: any) => rule.required(),
     }),
+
+    createImageField({ name: "image", title: "Image", required: true }),
+
     defineField({
       name: "eyebrow",
       title: "Eyebrow",
@@ -36,8 +38,9 @@ export default defineType({
     defineField({
       name: "title",
       title: "Title",
-      type: "text",
-      description: "The main heading for the hero section.",
+      type: "array",
+      description: "The title of the Call to Action.",
+      of: [createRichTextBlock({ highlighters: true })],
       validation: (rule: any) => rule.required(),
     }),
     defineField({
@@ -55,12 +58,12 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { title: "title" },
-    prepare({ title }) {
+    select: { title: "title", image: "image" },
+    prepare({ title, image }) {
       return {
-        title: "Announcement",
-        subtitle: title,
-        media: icon,
+        title: "Call to Action",
+        subtitle: getFirstBlockText(title),
+        media: image,
       };
     },
   },

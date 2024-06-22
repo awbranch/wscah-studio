@@ -1,15 +1,15 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 import { createNoteField, getFirstBlockText, createPaletteField } from "./utils";
-import { BsGrid3X3Gap } from "react-icons/bs";
+import { BsGrid3X3GapFill as icon } from "react-icons/bs";
 
 export default defineType({
   name: "mediaCardSet",
   title: "Media Card Set",
   type: "object",
-  icon: BsGrid3X3Gap,
+  icon: icon,
   fields: [
     createNoteField(
-      BsGrid3X3Gap,
+      icon,
       "A set of portrait shaped cards that can contain a mix of images, icons, data, and text displayed in a grid.",
     ),
     createPaletteField({
@@ -36,7 +36,7 @@ export default defineType({
       return {
         title: "Media Card Set",
         subtitle: `Containing ${cards?.length} cards`,
-        media: BsGrid3X3Gap,
+        media: icon,
       };
     },
   },

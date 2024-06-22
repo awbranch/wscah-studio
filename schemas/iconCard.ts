@@ -1,15 +1,15 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 import { createNoteField, validateVectorImageType } from "./utils";
-import { BsFileMedical } from "react-icons/bs";
+import { BsFileMedical as icon } from "react-icons/bs";
 
 export default defineType({
   name: "iconCard",
   title: "Icon Card",
   type: "object",
-  icon: BsFileMedical,
+  icon,
   fields: [
     createNoteField(
-      BsFileMedical,
+      icon,
       "A portrait shaped card that displays an icon, text, and a button. These are typically used in a grid.",
     ),
     defineField({

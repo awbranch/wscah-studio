@@ -1,13 +1,13 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
-import { createRichTextBlock, validateVectorImageType } from "./utils";
+import { validateVectorImageType } from "./utils";
 
-import { FaWindowMinimize } from "react-icons/fa";
+import { FaWindowMinimize as icon } from "react-icons/fa";
 
 export default defineType({
   name: "footer",
   title: "Footer",
   type: "document",
-  icon: FaWindowMinimize,
+  icon,
   options: {
     singleton: true,
   },

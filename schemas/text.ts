@@ -6,19 +6,17 @@ import {
   createStockComponentFields,
   createNoteField,
 } from "./utils.js";
-
 import { alignment } from "./globals.js";
-
-import { FaRegFileAlt } from "react-icons/fa";
+import { FaAlignLeft as icon } from "react-icons/fa";
 
 export default defineType({
   name: "richText",
   title: "Text",
   type: "object",
-  icon: FaRegFileAlt,
+  icon,
   fields: [
     createNoteField(
-      FaRegFileAlt,
+      icon,
       "A text component can contain rich text such as headers, paragraphs, hyperlinks, bulleted lists and images.",
     ),
     defineField({

@@ -10,18 +10,21 @@ export default defineType({
   options: {
     singleton: true,
   },
+  fieldsets: [{ name: "alert", title: "Alert" }],
   fields: [
     defineField({
       name: "showAlert",
-      title: "Show Alert",
+      title: "Show",
       type: "boolean",
+      fieldset: "alert",
     }),
     defineField({
       name: "alertMessage",
-      title: "Alert Message",
+      title: "Message",
       type: "array",
       of: [defineArrayMember(createRichTextBlock({ decorators: true, links: true }))],
       hidden: ({ document }) => !document?.showAlert,
+      fieldset: "alert",
     }),
     defineField({
       name: "logo",

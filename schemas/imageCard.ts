@@ -1,15 +1,15 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { createNoteField, createPaletteField, createImageField } from "./utils";
-import { BsFileRichtext } from "react-icons/bs";
+import { createNoteField, createImageField } from "./utils";
+import { BsFileRichtext as icon} from "react-icons/bs";
 
 export default defineType({
   name: "imageCard",
   title: "Image Card",
   type: "object",
-  icon: BsFileRichtext,
+  icon,
   fields: [
     createNoteField(
-      BsFileRichtext,
+      icon,
       "A portrait shaped card that can displays an image, text, and a button. These are typically used in a grid.",
     ),
     createImageField({ name: "image", title: "Image", required: true }),

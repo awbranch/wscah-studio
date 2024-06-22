@@ -21,6 +21,8 @@ import text from "./text";
 import iframe from "./iframe";
 import dataPoint from "./dataPoint";
 import announcement from "./announcement";
+import callToAction from "./callToAction";
+import latestNews from "./latestNews";
 
 export const schemaTypes = [
   settings,
@@ -45,5 +47,7 @@ export const schemaTypes = [
   hero,
   iframe,
   dataPoint,
-  announcement
+  announcement,
+  callToAction,
+  latestNews
 ];

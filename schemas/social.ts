@@ -1,6 +1,5 @@
 import { defineField, defineType } from "sanity";
 import { FaShare as icon } from "react-icons/fa";
-
 export default defineType({
   name: "social",
   title: "Social",

@@ -1,11 +1,11 @@
 import { defineField, defineType } from "sanity";
-import { FaMapPin } from "react-icons/fa6";
+import { FaMapPin as icon } from "react-icons/fa6";
 
 export default defineType({
   name: "address",
   title: "Address",
   type: "object",
-  icon: FaMapPin,
+  icon,
   fields: [
     defineField({
       name: "street",

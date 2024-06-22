@@ -1,11 +1,11 @@
 import { defineField, defineType } from "sanity";
-import { FaHashtag } from "react-icons/fa6";
+import { FaHashtag as icon } from "react-icons/fa6";
 
 export default defineType({
   name: "dataPoint",
   title: "Data Point",
   type: "object",
-  icon: FaHashtag,
+  icon,
   fields: [
     defineField({
       name: "year",
@@ -25,7 +25,7 @@ export default defineType({
     prepare({ year, value }) {
       return {
         title: `${year}: ${value.toLocaleString()}`,
-        media: FaHashtag,
+        media: icon,
       };
     },
   },

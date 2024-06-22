@@ -1,15 +1,15 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 import { createNoteField } from "./utils";
-import { BsFileSpreadsheet } from "react-icons/bs";
+import { BsFileSpreadsheet as icon } from "react-icons/bs";
 
 export default defineType({
   name: "dataCard",
   title: "Data Card",
   type: "object",
-  icon: BsFileSpreadsheet,
+  icon,
   fields: [
     createNoteField(
-      BsFileSpreadsheet,
+      icon,
       "A portrait shaped card that displays an data, text, and a button. These are typically used in a grid.",
     ),
     defineField({

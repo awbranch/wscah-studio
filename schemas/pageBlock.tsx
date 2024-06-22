@@ -8,6 +8,13 @@ export default defineType({
   name: "pageBlock",
   title: "Block",
   type: "object",
+  fieldsets: [
+    {
+      name: "advanced",
+      title: "Advanced Options",
+      options: { collapsible: true, collapsed: true },
+    },
+  ],
   fields: [
     createNoteField(
       LuRectangleHorizontal,
@@ -18,9 +25,30 @@ export default defineType({
     defineField({
       name: "id",
       title: "ID",
-      type: "slug",
+      type: "string",
       description: "Id of this block in the page.",
-      validation: (rule: any) => rule.required(),
+      validation: (rule: any) =>
+        rule.required().custom((id: string, context: any) => {
+          if (!/^[a-z\-]+$/.test(id)) {
+            return `Ids must be lowercase letters and hyphens. [${id}]`;
+          }
+          return true;
+        }),
+    }),
+    createPaletteField({ name: "palette", title: "Palette" }),
+    defineField({
+      name: "components",
+      title: "Components",
+      type: "array",
+      of: [
+        defineArrayMember({ type: "richText" }),
+        defineArrayMember({ type: "callToAction" }),
+        defineArrayMember({ type: "mediaCardSet" }),
+        defineArrayMember({ type: "announcement" }),
+        defineArrayMember({ type: "hero" }),
+        defineArrayMember({ type: "iframe" }),
+        defineArrayMember({ type: "latestNews" }),
+      ],
     }),
     defineField({
       name: "hidden",
@@ -30,8 +58,8 @@ export default defineType({
         "You can hide a block rather than deleting if if you want to not show it temporarily",
       initialValue: false,
       validation: (rule: any) => rule.required(),
+      fieldset: "advanced",
     }),
-    createPaletteField({ name: "palette", title: "Palette" }),
     defineField({
       name: "maxWidth",
       title: "Max Width",
@@ -43,6 +71,7 @@ export default defineType({
         list: pageWidths,
         layout: "dropdown",
       },
+      fieldset: "advanced",
     }),
     defineField({
       name: "spacing",
@@ -54,18 +83,7 @@ export default defineType({
         list: verticalSpacing,
         layout: "dropdown",
       },
-    }),
-    defineField({
-      name: "components",
-      title: "Components",
-      type: "array",
-      of: [
-        defineArrayMember({ type: "richText" }),
-        defineArrayMember({ type: "mediaCardSet" }),
-        defineArrayMember({ type: "announcement" }),
-        defineArrayMember({ type: "hero" }),
-        defineArrayMember({ type: "iframe" }),
-      ],
+      fieldset: "advanced",
     }),
   ],
   preview: {
@@ -77,7 +95,7 @@ export default defineType({
     },
     prepare({ id, hidden, palette, components }) {
       return {
-        title: `#${id?.current}`,
+        title: id,
         subtitle: hidden ? "hidden" : `${components?.length || "0"} components`,
         media: (
           <BlockPreview
