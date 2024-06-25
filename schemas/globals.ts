@@ -11,13 +11,8 @@ export const colorPalettes = [
   },
   {
     title: "Blue: A blue background with white text.",
-    value: "highlight",
+    value: "blue",
     background: "#475D9F",
-  },
-  {
-    title: "Dark Blue: A dark blue background with white text.",
-    value: "dark-blue",
-    background: "#1E357C",
   },
 ];
 
@@ -43,6 +38,13 @@ export const highlightColors = [
 ];
 
 export const pageWidths = [
+  { title: "Large", value: "lg" },
+  { title: "Medium", value: "md" },
+  { title: "Small", value: "sm" },
+  { title: "Extra Small", value: "xs" },
+];
+
+export const blockWidths = [
   { title: "Large", value: "lg" },
   { title: "Medium", value: "md" },
   { title: "Small", value: "sm" },

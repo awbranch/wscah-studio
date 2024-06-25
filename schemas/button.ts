@@ -7,8 +7,8 @@ export default defineType({
   type: "object",
   fields: [
     defineField({
-      name: "style",
-      title: "Style",
+      name: "variant",
+      title: "Variant",
       type: "string",
       options: {
         list: [
@@ -61,11 +61,11 @@ export default defineType({
     select: {
       label: "label",
       link: "href",
-      style: "style",
+      variant: "variant",
     },
-    prepare({ label, link, style }) {
+    prepare({ label, link, variant }) {
       return {
-        title: `Button: ${label || ""} - (${style || ""})`,
+        title: `Button: ${label || ""} - (${variant || ""})`,
         subtitle: link,
         media: icon,
       };

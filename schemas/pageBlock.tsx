@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import BlockPreview from "../components/BlockPreview";
 import { createPaletteField, createNoteField } from "./utils";
-import { colorPalettes, pageWidths, verticalSpacing } from "./globals";
+import { colorPalettes, blockWidths, verticalSpacing } from "./globals";
 import { LuRectangleHorizontal } from "react-icons/lu";
 
 export default defineType({
@@ -68,7 +68,7 @@ export default defineType({
         "Narrower widths are ideal for text heavy blocks to avoid long line lengths.",
       type: "string",
       options: {
-        list: pageWidths,
+        list: blockWidths,
         layout: "dropdown",
       },
       fieldset: "advanced",

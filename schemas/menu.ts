@@ -2,19 +2,9 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 import { IoText as textIcon } from "react-icons/io5";
 import { RiRectangleFill as btnIcon } from "react-icons/ri";
 
-const styleList = [
-  { title: "Text Button", value: "text" },
-  { title: "Rounded Button", value: "rounded" },
-];
-
-const actionList = [
-  { title: "Go to Link", value: "link" },
-  { title: "Display Menu", value: "menu" },
-];
-
 export default defineType({
-  name: "menuButton",
-  title: "Menu Button",
+  name: "menu",
+  title: "Menu",
   type: "object",
   fields: [
     defineField({
@@ -24,12 +14,15 @@ export default defineType({
       validation: (rule: any) => rule.required(),
     }),
     defineField({
-      name: "style",
-      title: "Style",
+      name: "variant",
+      title: "Variant",
       type: "string",
       initialValue: "text",
       options: {
-        list: styleList,
+        list: [
+          { title: "Text", value: "text" },
+          { title: "Button", value: "button" },
+        ],
         layout: "radio",
         direction: "horizontal",
       },
@@ -41,7 +34,10 @@ export default defineType({
       type: "string",
       initialValue: "link",
       options: {
-        list: actionList,
+        list: [
+          { title: "Go to Link", value: "link" },
+          { title: "Display Menu", value: "menu" },
+        ],
         layout: "radio",
         direction: "horizontal",
       },
@@ -70,16 +66,20 @@ export default defineType({
   ],
   preview: {
     select: {
-      style: "style",
+      variant: "variant",
       name: "name",
-      href: "href",
       action: "action",
+      href: "href",
+      items: "items",
     },
-    prepare({ style, name, href, action }) {
+    prepare({ variant, name, action, href, items }) {
       return {
-        title: style === "text" ? "Text Button" : "Rounded Button",
-        subtitle: name,
-        media: style === "text" ? textIcon : btnIcon,
+        title: name,
+        subtitle:
+          action === "link"
+            ? "Go to Link: " + href
+            : "Display menu with " + items.length + " items",
+        media: variant === "text" ? textIcon : btnIcon,
       };
     },
   },

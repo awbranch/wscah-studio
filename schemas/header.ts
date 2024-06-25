@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
-import { createRichTextBlock, validateVectorImageType } from "./utils";
+import { createPaletteField, createRichTextBlock, validateVectorImageType } from "./utils";
 import { FaWindowMaximize as icon } from "react-icons/fa";
 
 export default defineType({
@@ -25,26 +25,16 @@ export default defineType({
       of: [defineArrayMember(createRichTextBlock({ decorators: true, links: true }))],
       hidden: ({ document }) => !document?.showAlert,
       fieldset: "alert",
+      validation: (Rule) =>
+        Rule.custom((alertMessage, context) =>
+          context?.document?.showAlert && alertMessage === undefined ? "Message is required" : true,
+        ),
     }),
     defineField({
-      name: "logo",
-      title: "Logo",
-      type: "image",
-      validation: (rule: any) => rule.required().assetRequired().custom(validateVectorImageType),
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Alternate Text",
-          type: "string",
-          validation: (rule: any) => rule.required(),
-        }),
-      ],
-    }),
-    defineField({
-      name: "menuButtons",
-      title: "Menu Buttons",
+      name: "menus",
+      title: "Menus",
       type: "array",
-      of: [defineArrayMember({ type: "menuButton" })],
+      of: [defineArrayMember({ type: "menu" })],
     }),
   ],
   preview: {

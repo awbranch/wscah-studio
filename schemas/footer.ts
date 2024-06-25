@@ -13,20 +13,6 @@ export default defineType({
   },
   fields: [
     defineField({
-      name: "logo",
-      title: "Logo",
-      type: "image",
-      validation: (rule: any) => rule.required().assetRequired().custom(validateVectorImageType),
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Alternate Text",
-          type: "string",
-          validation: (rule: any) => rule.required(),
-        }),
-      ],
-    }),
-    defineField({
       name: "organization",
       title: "Organization",
       type: "string",
