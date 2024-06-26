@@ -26,18 +26,8 @@ export default defineType({
       of: [
         createRichTextBlock({ all: true }),
         createImageField({ name: "image", title: "Image", caption: true }),
+        { type: "buttonRow" },
       ],
-    }),
-    defineField({
-      name: "alignment",
-      title: "Alignment",
-      type: "string",
-      options: {
-        list: alignment,
-        layout: "dropdown",
-      },
-      initialValue: "left",
-      validation: (rule: any) => rule.required(),
     }),
     defineField({
       name: "columns",

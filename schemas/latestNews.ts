@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { createRichTextBlock, createNoteField, getFirstBlockText } from "./utils";
+import { createTitleTextBlock, createNoteField, getFirstBlockText } from "./utils";
 
 import { FaBell as icon } from "react-icons/fa6";
 
@@ -21,7 +21,7 @@ export default defineType({
       title: "Title",
       type: "array",
       description: "An optional title for the latest news.",
-      of: [createRichTextBlock({ highlighters: true })],
+      of: [createTitleTextBlock()],
     }),
     defineField({
       name: "text",

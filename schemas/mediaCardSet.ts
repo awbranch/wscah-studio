@@ -1,7 +1,7 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 import {
   createNoteField,
-  createRichTextBlock,
+  createTitleTextBlock,
   getFirstBlockText,
   createPaletteField,
 } from "./utils";
@@ -33,7 +33,7 @@ export default defineType({
       title: "Title",
       type: "array",
       description: "An optional title for the media cards.",
-      of: [createRichTextBlock({ highlighters: true })],
+      of: [createTitleTextBlock()],
     }),
     defineField({
       name: "text",

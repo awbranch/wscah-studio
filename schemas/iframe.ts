@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { createRichTextBlock, getFirstBlockText } from "./utils";
+import { createTitleTextBlock, getFirstBlockText } from "./utils";
 import { PiFrameCornersFill as icon } from "react-icons/pi";
 
 export default defineType({
@@ -20,7 +20,7 @@ export default defineType({
       title: "Title",
       type: "array",
       description: "An optional title for the iFrame.",
-      of: [createRichTextBlock({ highlighters: true })],
+      of: [createTitleTextBlock()],
     }),
     defineField({
       name: "text",

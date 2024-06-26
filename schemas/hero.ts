@@ -1,5 +1,11 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { createRichTextBlock, createNoteField, getFirstBlockText, createImageField } from "./utils";
+import {
+  createRichTextBlock,
+  createTitleTextBlock,
+  createNoteField,
+  getFirstBlockText,
+  createImageField,
+} from "./utils";
 import { GiStrong as icon } from "react-icons/gi";
 
 export default defineType({
@@ -18,7 +24,7 @@ export default defineType({
       title: "Title",
       type: "array",
       description: "The main heading for the hero section.",
-      of: [createRichTextBlock({ highlighters: true })],
+      of: [createTitleTextBlock()],
       validation: (rule: any) => rule.required(),
     }),
     defineField({

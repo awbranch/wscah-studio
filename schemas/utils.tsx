@@ -71,9 +71,9 @@ export type CreateRichTextBlockConfig = {
   blockquote?: boolean;
   lists?: boolean;
   decorators?: boolean;
-  highlighters?: boolean;
   links?: boolean;
 };
+
 export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
   const styles: BlockStyleDefinition[] = [];
   const lists: BlockListDefinition[] = [];
@@ -89,7 +89,7 @@ export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
   }
 
   if (config.all || config.h3) {
-    styles.push({ title: "Eyebrow", value: "h3" });
+    styles.push({ title: "Heading 3", value: "h3" });
   }
 
   if (config.all || config.large) {
@@ -130,19 +130,6 @@ export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
     );
   }
 
-  if (config.all || config.highlighters) {
-    decorators.push(
-      ...highlightColors.map((h) => ({
-        title: h.title,
-        value: "highlight-" + h.value,
-        icon: PiHighlighterFill({ color: h.background }),
-        component: ({ children }: any) => (
-          <span style={{ backgroundColor: h.background, color: h.color }}>{children}</span>
-        ),
-      })),
-    );
-  }
-
   if (config.all || config.links) {
     annotations.push({
       name: "link",
@@ -170,6 +157,25 @@ export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
     marks: {
       decorators: decorators,
       annotations: annotations,
+    },
+  };
+}
+
+export function createTitleTextBlock() {
+  return {
+    type: "block",
+    styles: [],
+    lists: [],
+    marks: {
+      decorators: highlightColors.map((h) => ({
+        title: h.title,
+        value: "highlight-" + h.value,
+        icon: PiHighlighterFill({ color: h.background }),
+        component: ({ children }: any) => (
+          <span style={{ backgroundColor: h.background, color: h.color }}>{children}</span>
+        ),
+      })),
+      annotations: [],
     },
   };
 }

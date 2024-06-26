@@ -1,51 +1,53 @@
-import settings from "./settings";
-import header from "./header";
+import address from "./address";
+import announcement from "./announcement";
+import button from "./button";
+import buttonRow from "./buttonRow.js";
+import callToAction from "./callToAction";
+import carouselImage from "./carouselmage";
+import dataCard from "./dataCard";
+import dataPoint from "./dataPoint";
 import footer from "./footer";
-import redirect from "./redirect";
+import header from "./header";
+import hero from "./hero";
+import iconCard from "./iconCard";
+import iframe from "./iframe";
+import imageCard from "./imageCard";
+import latestNews from "./latestNews";
+import link from "./link";
+import mediaCardSet from "./mediaCardSet";
 import menu from "./menu";
 import menuItem from "./menuItem";
-import address from "./address";
-import social from "./social";
-import link from "./link";
 import page from "./page";
-import button from "./button";
 import pageBlock from "./pageBlock";
-import carouselImage from "./carouselmage";
-import mediaCardSet from "./mediaCardSet";
-import imageCard from "./imageCard";
-import iconCard from "./iconCard";
-import dataCard from "./dataCard";
-import hero from "./hero";
+import redirect from "./redirect";
+import settings from "./settings";
+import social from "./social";
 import text from "./text";
-import iframe from "./iframe";
-import dataPoint from "./dataPoint";
-import announcement from "./announcement";
-import callToAction from "./callToAction";
-import latestNews from "./latestNews";
 
 export const schemaTypes = [
-  settings,
-  header,
+  address,
+  announcement,
+  button,
+  buttonRow,
+  callToAction,
+  carouselImage,
+  dataCard,
+  dataPoint,
   footer,
-  page,
-  redirect,
+  header,
+  hero,
+  iconCard,
+  iframe,
+  imageCard,
+  latestNews,
+  link,
+  mediaCardSet,
   menu,
   menuItem,
-  address,
-  social,
-  link,
+  page,
   pageBlock,
-  button,
-  carouselImage,
-  mediaCardSet,
-  imageCard,
-  iconCard,
-  dataCard,
+  redirect,
+  settings,
+  social,
   text,
-  hero,
-  iframe,
-  dataPoint,
-  announcement,
-  callToAction,
-  latestNews,
 ];

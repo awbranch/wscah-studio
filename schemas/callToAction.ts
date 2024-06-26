@@ -1,5 +1,5 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { createRichTextBlock, createNoteField, getFirstBlockText, createImageField } from "./utils";
+import { createTitleTextBlock, createNoteField, getFirstBlockText, createImageField } from "./utils";
 import { FaAddressCard as icon } from "react-icons/fa";
 
 export default defineType({
@@ -40,7 +40,7 @@ export default defineType({
       title: "Title",
       type: "array",
       description: "The title of the Call to Action.",
-      of: [createRichTextBlock({ highlighters: true })],
+      of: [createTitleTextBlock()],
       validation: (rule: any) => rule.required(),
     }),
     defineField({
