@@ -14,7 +14,6 @@ import carouselImage from "./carouselmage";
 import mediaCardSet from "./mediaCardSet";
 import imageCard from "./imageCard";
 import iconCard from "./iconCard";
-import titleCard from "./titleCard";
 import dataCard from "./dataCard";
 import hero from "./hero";
 import text from "./text";
@@ -41,7 +40,6 @@ export const schemaTypes = [
   mediaCardSet,
   imageCard,
   iconCard,
-  titleCard,
   dataCard,
   text,
   hero,

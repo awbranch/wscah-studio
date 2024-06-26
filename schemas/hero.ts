@@ -26,6 +26,7 @@ export default defineType({
       title: "Subtitle",
       type: "text",
       description: "An optional secondary heading for the hero section.",
+      rows: 3,
     }),
     defineField({
       name: "display",

@@ -1,5 +1,10 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { createNoteField, getFirstBlockText, createPaletteField } from "./utils";
+import {
+  createNoteField,
+  createRichTextBlock,
+  getFirstBlockText,
+  createPaletteField,
+} from "./utils";
 import { BsGrid3X3GapFill as icon } from "react-icons/bs";
 
 export default defineType({
@@ -17,7 +22,26 @@ export default defineType({
       title: "Card Palette",
       description: "The color palette applied to each card.",
     }),
-
+    defineField({
+      name: "eyebrow",
+      title: "Eyebrow",
+      type: "string",
+      description: "An optional eyebrow heading that appears above the title.",
+    }),
+    defineField({
+      name: "title",
+      title: "Title",
+      type: "array",
+      description: "An optional title for the media cards.",
+      of: [createRichTextBlock({ highlighters: true })],
+    }),
+    defineField({
+      name: "text",
+      title: "Text",
+      type: "text",
+      description: "Optional text below the title.",
+      rows: 3,
+    }),
     defineField({
       name: "cards",
       title: "Cards",
@@ -25,7 +49,6 @@ export default defineType({
       of: [
         defineArrayMember({ type: "imageCard" }),
         defineArrayMember({ type: "iconCard" }),
-        defineArrayMember({ type: "titleCard" }),
         defineArrayMember({ type: "dataCard" }),
       ],
     }),
@@ -34,8 +57,8 @@ export default defineType({
     select: { title: "title", cards: "cards" },
     prepare({ title, cards }) {
       return {
-        title: "Media Card Set",
-        subtitle: `Containing ${cards?.length} cards`,
+        title: `Media Card Set (${cards?.length} cards)`,
+        subtitle: title ? getFirstBlockText(title) : undefined,
         media: icon,
       };
     },

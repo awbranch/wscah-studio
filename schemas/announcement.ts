@@ -36,7 +36,7 @@ export default defineType({
     defineField({
       name: "title",
       title: "Title",
-      type: "text",
+      type: "string",
       description: "The main heading for the hero section.",
       validation: (rule: any) => rule.required(),
     }),
@@ -45,6 +45,7 @@ export default defineType({
       title: "Text",
       type: "text",
       description: "Optional text below the title.",
+      rows: 4,
     }),
     defineField({
       name: "button",
