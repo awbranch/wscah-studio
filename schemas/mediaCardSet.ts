@@ -23,26 +23,6 @@ export default defineType({
       description: "The color palette applied to each card.",
     }),
     defineField({
-      name: "eyebrow",
-      title: "Eyebrow",
-      type: "string",
-      description: "An optional eyebrow heading that appears above the title.",
-    }),
-    defineField({
-      name: "title",
-      title: "Title",
-      type: "array",
-      description: "An optional title for the media cards.",
-      of: [createTitleTextBlock()],
-    }),
-    defineField({
-      name: "text",
-      title: "Text",
-      type: "text",
-      description: "Optional text below the title.",
-      rows: 3,
-    }),
-    defineField({
       name: "cards",
       title: "Cards",
       type: "array",
@@ -50,15 +30,16 @@ export default defineType({
         defineArrayMember({ type: "imageCard" }),
         defineArrayMember({ type: "iconCard" }),
         defineArrayMember({ type: "dataCard" }),
+        defineArrayMember({ type: "titleCard" }),
       ],
     }),
   ],
   preview: {
-    select: { title: "title", cards: "cards" },
-    prepare({ title, cards }) {
+    select: { cards: "cards" },
+    prepare({ cards }) {
       return {
-        title: `Media Card Set (${cards?.length} cards)`,
-        subtitle: title ? getFirstBlockText(title) : undefined,
+        title: "Media Card Set",
+        subtitle: `Containing ${cards?.length} cards`,
         media: icon,
       };
     },

@@ -23,6 +23,8 @@ import pageBlock from "./pageBlock";
 import redirect from "./redirect";
 import settings from "./settings";
 import social from "./social";
+import title from "./title";
+import titleCard from "./titleCard";
 
 export const schemaTypes = [
   address,
@@ -50,4 +52,6 @@ export const schemaTypes = [
   redirect,
   settings,
   social,
+  title,
+  titleCard,
 ];

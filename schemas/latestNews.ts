@@ -11,26 +11,6 @@ export default defineType({
   fields: [
     createNoteField(icon, "Displays the most recent news stories in a Media Card Set."),
     defineField({
-      name: "eyebrow",
-      title: "Eyebrow",
-      type: "string",
-      description: "An optional eyebrow heading that appears above the title.",
-    }),
-    defineField({
-      name: "title",
-      title: "Title",
-      type: "array",
-      description: "An optional title for the latest news.",
-      of: [createTitleTextBlock()],
-    }),
-    defineField({
-      name: "text",
-      title: "Text",
-      type: "text",
-      description: "Optional text below the title.",
-      rows: 3,
-    }),
-    defineField({
       name: "count",
       title: "Count",
       type: "number",
@@ -39,11 +19,11 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { title: "title", count: "count" },
-    prepare({ title, count }) {
+    select: { count: "count" },
+    prepare({ count }) {
       return {
-        title: `Latest News (${count} stories)`,
-        subtitle: getFirstBlockText(title),
+        title: "Latest News",
+        subtitle: `${count} stories`,
         media: icon,
       };
     },

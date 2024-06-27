@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import BlockPreview from "../components/BlockPreview";
 import { createPaletteField, createNoteField } from "./utils";
-import { colorPalettes, blockWidths, verticalSpacing } from "./globals";
+import { colorPalettes } from "./globals";
 import { LuRectangleHorizontal } from "react-icons/lu";
 
 export default defineType({
@@ -48,6 +48,7 @@ export default defineType({
         defineArrayMember({ type: "iframe" }),
         defineArrayMember({ type: "latestNews" }),
         defineArrayMember({ type: "mediaCardSet" }),
+        defineArrayMember({ type: "title" }),
       ],
     }),
     defineField({
@@ -68,7 +69,12 @@ export default defineType({
         "Narrower widths are ideal for text heavy blocks to avoid long line lengths.",
       type: "string",
       options: {
-        list: blockWidths,
+        list: [
+          { title: "Large", value: "lg" },
+          { title: "Medium", value: "md" },
+          { title: "Small", value: "sm" },
+          { title: "Extra Small", value: "xs" },
+        ],
         layout: "dropdown",
       },
       fieldset: "advanced",
@@ -80,7 +86,12 @@ export default defineType({
         "The optional spacing between components in this block. If not set it will use the default spacing.",
       type: "string",
       options: {
-        list: verticalSpacing,
+        list: [
+          { title: "Extra Small", value: "xs" },
+          { title: "Small", value: "sm" },
+          { title: "Medium", value: "md" },
+          { title: "Large", value: "lg" },
+        ],
         layout: "dropdown",
       },
       fieldset: "advanced",

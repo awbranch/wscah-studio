@@ -1,6 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import { FaFile as icon } from "react-icons/fa";
-import { pageWidths } from "./globals";
 import { createNoteField } from "./utils";
 
 export default defineType({
@@ -66,7 +65,12 @@ export default defineType({
         "The optional maximum width of this page. " +
         "Narrower widths are ideal for text heavy pages to avoid long line lengths.",
       options: {
-        list: pageWidths,
+        list: [
+          { title: "Large", value: "lg" },
+          { title: "Medium", value: "md" },
+          { title: "Small", value: "sm" },
+          { title: "Extra Small", value: "xs" },
+        ],
         layout: "dropdown",
       },
       fieldset: "advanced",

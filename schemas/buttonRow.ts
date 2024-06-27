@@ -1,6 +1,7 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 import { PiDotsThreeOutline as icon } from "react-icons/pi";
 import { createNoteField } from "./utils";
+import { alignment } from "./globals";
 
 export default defineType({
   name: "buttonRow",
@@ -20,11 +21,7 @@ export default defineType({
       title: "Alignment",
       type: "string",
       options: {
-        list: [
-          { title: "Left", value: "left" },
-          { title: "Center", value: "center" },
-          { title: "Right", value: "right" },
-        ],
+        list: alignment,
         layout: "radio",
         direction: "horizontal",
       },

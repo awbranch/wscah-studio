@@ -1,5 +1,4 @@
 import { defineField, defineType } from "sanity";
-import { createTitleTextBlock, getFirstBlockText } from "./utils";
 import { PiFrameCornersFill as icon } from "react-icons/pi";
 
 export default defineType({
@@ -10,26 +9,6 @@ export default defineType({
   icon,
   fields: [
     defineField({
-      name: "eyebrow",
-      title: "Eyebrow",
-      type: "string",
-      description: "An optional eyebrow heading that appears above the title.",
-    }),
-    defineField({
-      name: "title",
-      title: "Title",
-      type: "array",
-      description: "An optional title for the iFrame.",
-      of: [createTitleTextBlock()],
-    }),
-    defineField({
-      name: "text",
-      title: "Text",
-      type: "text",
-      description: "Optional text below the title.",
-      rows: 3,
-    }),
-    defineField({
       name: "code",
       title: "Embed Code",
       type: "text",
@@ -37,11 +16,10 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { title: "title" },
-    prepare({ title }) {
+    select: {},
+    prepare() {
       return {
         title: "Iframe",
-        subtitle: title ? getFirstBlockText(title) : undefined,
         media: icon,
       };
     },
