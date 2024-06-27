@@ -249,29 +249,3 @@ export function createNoteField(icon: IconType, description: string) {
   });
 }
 
-export function createStockComponentFields() {
-  return [
-    // defineField({
-    //   name: "maxWidth",
-    //   title: "Max Width",
-    //   description:
-    //     "The optional maximum width this component is displayed on the page. If not set it will use the max width of the page.",
-    //   type: "string",
-    //   options: {
-    //     list: pageWidths,
-    //     layout: "dropdown",
-    //   },
-    // }),
-    // defineField({
-    //   name: "spacing",
-    //   title: "Spacing",
-    //   description:
-    //     "The optional vertical spacing between this component the components above and below it. If not set it will use the component spacing of the block or page.",
-    //   type: "string",
-    //   options: {
-    //     list: verticalSpacing,
-    //     layout: "dropdown",
-    //   },
-    // }),
-  ];
-}

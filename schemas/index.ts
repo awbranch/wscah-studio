@@ -1,5 +1,6 @@
 import address from "./address";
 import announcement from "./announcement";
+import article from "./article";
 import button from "./button";
 import buttonRow from "./buttonRow.js";
 import callToAction from "./callToAction";
@@ -22,11 +23,11 @@ import pageBlock from "./pageBlock";
 import redirect from "./redirect";
 import settings from "./settings";
 import social from "./social";
-import text from "./text";
 
 export const schemaTypes = [
   address,
   announcement,
+  article,
   button,
   buttonRow,
   callToAction,
@@ -49,5 +50,4 @@ export const schemaTypes = [
   redirect,
   settings,
   social,
-  text,
 ];

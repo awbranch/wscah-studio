@@ -41,13 +41,13 @@ export default defineType({
       title: "Components",
       type: "array",
       of: [
-        defineArrayMember({ type: "richText" }),
-        defineArrayMember({ type: "callToAction" }),
-        defineArrayMember({ type: "mediaCardSet" }),
         defineArrayMember({ type: "announcement" }),
+        defineArrayMember({ type: "article" }),
+        defineArrayMember({ type: "callToAction" }),
         defineArrayMember({ type: "hero" }),
         defineArrayMember({ type: "iframe" }),
         defineArrayMember({ type: "latestNews" }),
+        defineArrayMember({ type: "mediaCardSet" }),
       ],
     }),
     defineField({

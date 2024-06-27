@@ -3,21 +3,19 @@ import {
   createImageField,
   createRichTextBlock,
   getFirstBlockText,
-  createStockComponentFields,
   createNoteField,
 } from "./utils.js";
-import { alignment } from "./globals.js";
 import { FaAlignLeft as icon } from "react-icons/fa";
 
 export default defineType({
-  name: "richText",
-  title: "Text",
+  name: "article",
+  title: "Article",
   type: "object",
   icon,
   fields: [
     createNoteField(
       icon,
-      "A text component can contain rich text such as headers, paragraphs, hyperlinks, bulleted lists and images.",
+      "A component can contain rich text such as headers, paragraphs, hyperlinks, bulleted lists and images.",
     ),
     defineField({
       name: "text",
@@ -47,13 +45,12 @@ export default defineType({
       initialValue: 1,
       validation: (rule: any) => rule.required(),
     }),
-    ...createStockComponentFields(),
   ],
   preview: {
     select: { text: "text" },
     prepare({ text }) {
       return {
-        title: "Text",
+        title: "Article",
         subtitle: getFirstBlockText(text),
       };
     },
