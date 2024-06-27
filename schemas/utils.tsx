@@ -7,8 +7,7 @@ import {
   PortableTextBlock,
 } from "sanity";
 import { PiHighlighterFill } from "react-icons/pi";
-import { FaLightbulb } from "react-icons/fa6";
-import { colorPalettes, highlightColors, pageWidths, verticalSpacing } from "./globals";
+import { colorPalettes, highlightColors } from "./globals";
 import { getExtension } from "@sanity/asset-utils";
 import { IconType } from "react-icons";
 
@@ -68,6 +67,7 @@ export type CreateRichTextBlockConfig = {
   h3?: boolean;
   large?: boolean;
   small?: boolean;
+  xsmall?: boolean;
   blockquote?: boolean;
   lists?: boolean;
   decorators?: boolean;
@@ -96,7 +96,7 @@ export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
     styles.push({
       title: "Large",
       value: "large",
-      component: ({ children }) => <span style={{ fontSize: "1.2rem" }}>{children}</span>,
+      component: ({ children }) => <span style={{ fontSize: "1.125rem" }}>{children}</span>,
     });
   }
 
@@ -104,7 +104,15 @@ export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
     styles.push({
       title: "Small",
       value: "small",
-      component: ({ children }) => <span style={{ fontSize: "0.8rem" }}>{children}</span>,
+      component: ({ children }) => <span style={{ fontSize: "0.875rem" }}>{children}</span>,
+    });
+  }
+
+  if (config.all || config.xsmall) {
+    styles.push({
+      title: "Extra Small",
+      value: "xsmall",
+      component: ({ children }) => <span style={{ fontSize: "0.75rem" }}>{children}</span>,
     });
   }
 
@@ -248,4 +256,3 @@ export function createNoteField(icon: IconType, description: string) {
     },
   });
 }
-
