@@ -4,7 +4,6 @@ import {
   createTitleTextBlock,
   createNoteField,
   getFirstBlockText,
-  createImageField,
 } from "./utils";
 import { GiStrong as icon } from "react-icons/gi";
 

@@ -43,6 +43,7 @@ export default defineType({
       of: [
         defineArrayMember({ type: "announcement" }),
         defineArrayMember({ type: "article" }),
+        defineArrayMember({ type: "buttonRow" }),
         defineArrayMember({ type: "callToAction" }),
         defineArrayMember({ type: "hero" }),
         defineArrayMember({ type: "iframe" }),
