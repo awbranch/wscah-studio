@@ -19,6 +19,26 @@ export default defineType({
       fieldset: "alert",
     }),
     defineField({
+      name: "alertPalette",
+      title: "Palette",
+      type: "string",
+      options: {
+        list: [
+          { title: "Dark Blue", value: "dark-blue" },
+          { title: "Blue", value: "blue" },
+          { title: "Orange", value: "orange" },
+        ],
+        layout: "dropdown",
+      },
+      hidden: ({ document }) => !document?.showAlert,
+      initialValue: "dark-blue",
+      fieldset: "alert",
+      validation: (Rule) =>
+        Rule.custom((alertPalette, context) =>
+          context?.document?.showAlert && alertPalette === undefined ? "Palette is required" : true,
+        ),
+    }),
+    defineField({
       name: "alertMessage",
       title: "Message",
       type: "array",
