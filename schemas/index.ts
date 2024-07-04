@@ -4,7 +4,7 @@ import article from "./article";
 import button from "./button";
 import buttonRow from "./buttonRow.js";
 import callToAction from "./callToAction";
-import carouselImage from "./carouselmage";
+import imageRef from "./imageRef";
 import dataCard from "./dataCard";
 import dataPoint from "./dataPoint";
 import footer from "./footer";
@@ -33,7 +33,6 @@ export const schemaTypes = [
   button,
   buttonRow,
   callToAction,
-  carouselImage,
   dataCard,
   dataPoint,
   footer,
@@ -42,6 +41,7 @@ export const schemaTypes = [
   iconCard,
   iframe,
   imageCard,
+  imageRef,
   latestNews,
   link,
   mediaCardSet,

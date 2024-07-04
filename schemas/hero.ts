@@ -54,7 +54,7 @@ export default defineType({
       description:
         'The list of images to display. If "Image Display" set to "Fan Images" then the first 4 images will be displayed in a fan layout. If "Image Display" set to "Single Image" then only the first image will be displayed.',
       type: "array",
-      of: [defineArrayMember({ type: "carouselImage" })],
+      of: [defineArrayMember({ type: "imageRef" })],
     }),
     defineField({
       name: "button",
