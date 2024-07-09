@@ -37,6 +37,7 @@ export default defineType({
         ],
         layout: "dropdown",
       },
+      validation: (rule: any) => rule.required(),
     }),
     defineField({
       name: "data",
