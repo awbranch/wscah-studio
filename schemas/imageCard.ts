@@ -1,6 +1,6 @@
-import { defineField, defineType, defineArrayMember } from "sanity";
-import { createNoteField, createImageField } from "./utils";
-import { BsFileRichtext as icon} from "react-icons/bs";
+import { defineField, defineType } from "sanity";
+import { createNoteField, createImageField, getMediaCard } from "./utils";
+import { BsFileRichtext as icon } from "react-icons/bs";
 
 export default defineType({
   name: "imageCard",
@@ -25,17 +25,43 @@ export default defineType({
       rows: 3,
     }),
     defineField({
-      name: "button",
-      title: "Button",
-      type: "array",
-      of: [defineArrayMember({ type: "button" })],
-      validation: (rule) => rule.max(1),
+      name: "buttonLabel",
+      title: "Button Label",
+      type: "string",
+      description: "The label for the button.",
+      hidden: ({ document, parent }: any) => {
+        const mediaCard = getMediaCard(document, parent._key);
+        return !(mediaCard?.clickArea === "button" || mediaCard?.clickArea === "hybrid");
+      },
+      validation: (rule: any) =>
+        rule.custom((buttonLabel: string, { document, parent }: any) => {
+          const mediaCard = getMediaCard(document, parent._key);
+          if (
+            (mediaCard?.clickArea === "button" || mediaCard?.clickArea === "hybrid") &&
+            !buttonLabel
+          ) {
+            return "A button label is required.";
+          }
+          return true;
+        }),
     }),
     defineField({
       name: "href",
-      title: "Card Link",
+      title: "Button or Card Link",
       type: "string",
-      description: "Optionally you can set a link for the entire card.",
+      description: "The link for the button or card",
+      hidden: ({ document, parent }) => {
+        const mediaCard = getMediaCard(document, parent._key);
+        return mediaCard?.clickArea === "none";
+      },
+      validation: (rule: any) =>
+        rule.custom((href: string, { document, parent }: any) => {
+          const mediaCard = getMediaCard(document, parent._key);
+          if (!(mediaCard?.clickArea === "none") && !href) {
+            return "A link is required.";
+          }
+          return true;
+        }),
     }),
   ],
   preview: {

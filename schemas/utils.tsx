@@ -201,8 +201,15 @@ type CreatePaletteFieldConfig = {
   title: string;
   group?: string;
   description?: string;
+  required?: boolean;
 };
-export function createPaletteField({ name, title, group, description }: CreatePaletteFieldConfig) {
+export function createPaletteField({
+  name,
+  title,
+  group,
+  description,
+  required = true,
+}: CreatePaletteFieldConfig) {
   return defineField({
     name,
     title,
@@ -213,7 +220,7 @@ export function createPaletteField({ name, title, group, description }: CreatePa
       list: colorPalettes.map((c) => ({ title: c.title, value: c.value })),
       layout: "dropdown",
     },
-    validation: (rule: any) => rule.required(),
+    validation: required ? (rule: any) => rule.required() : undefined,
   });
 }
 
@@ -255,4 +262,20 @@ export function createNoteField(icon: IconType, description: string) {
       tone: "caution",
     },
   });
+}
+
+
+export function getMediaCard(document: any, cardKey: string) {
+  for (let block of document?.blocks) {
+    for (let component of block?.components) {
+      if (component._type === "mediaCardSet") {
+        for (let card of component?.cards) {
+          if (card._key === cardKey) {
+            return component;
+          }
+        }
+      }
+    }
+  }
+  return null;
 }
