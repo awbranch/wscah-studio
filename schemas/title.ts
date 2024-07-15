@@ -8,18 +8,40 @@ export default defineType({
   title: "Title",
   type: "object",
   icon: icon,
-  fieldsets: [
-    {
-      name: "advanced",
-      title: "Advanced Options",
-      options: { collapsible: true, collapsed: true },
-    },
-  ],
   fields: [
     createNoteField(
       icon,
       "The Title component is a simple component with a large heading and optional eyebrow and text. It is used to display a title over another component.",
     ),
+    defineField({
+      name: "alignment",
+      title: "Alignment",
+      type: "string",
+      options: {
+        list: alignment,
+        layout: "radio",
+        direction: "horizontal",
+      },
+      initialValue: "center",
+      validation: (rule: any) => rule.required(),
+    }),
+    defineField({
+      name: "maxWidth",
+      title: "Max Width",
+      description:
+        "The optional maximum width the titles. Narrower widths help avoid long line lengths. If not set it will use the max width of the page.",
+      type: "string",
+      options: {
+        list: [
+          { title: "Large", value: "lg" },
+          { title: "Medium", value: "md" },
+          { title: "Small", value: "sm" },
+          { title: "Extra Small", value: "xs" },
+        ],
+        layout: "radio",
+        direction: "horizontal",
+      },
+    }),
     defineField({
       name: "eyebrow",
       title: "Eyebrow",
@@ -35,40 +57,27 @@ export default defineType({
       validation: (rule: any) => rule.required(),
     }),
     defineField({
-      name: "text",
-      title: "Text",
-      type: "text",
-      description: "Optional text below the title.",
-    }),
-    defineField({
-      name: "alignment",
-      title: "Alignment",
-      type: "string",
-      options: {
-        list: alignment,
-        layout: "radio",
-        direction: "horizontal",
-      },
-      initialValue: "center",
-      validation: (rule: any) => rule.required(),
-      fieldset: "advanced",
-    }),
-    defineField({
-      name: "maxWidth",
-      title: "Max Width",
+      name: "titleSize",
+      title: "Title Size",
       description:
-        "The optional maximum width the titles. Narrower widths help avoid long line lenghts. If not set it will use the max width of the page.",
+        "The size of the text in the title. Longer titles may benefit from smaller sizes.",
       type: "string",
       options: {
         list: [
           { title: "Large", value: "lg" },
           { title: "Medium", value: "md" },
-          { title: "Small", value: "sm" },
-          { title: "Extra Small", value: "xs" },
         ],
-        layout: "dropdown",
+        layout: "radio",
+        direction: "horizontal",
       },
-      fieldset: "advanced",
+      initialValue: "lg",
+      validation: (rule: any) => rule.required(),
+    }),
+    defineField({
+      name: "text",
+      title: "Text",
+      type: "text",
+      description: "Optional text below the title.",
     }),
   ],
   preview: {
