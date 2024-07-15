@@ -36,9 +36,10 @@ export default defineType({
     defineField({
       name: "title",
       title: "Title",
-      type: "string",
+      type: "text",
       description: "The main heading for the hero section.",
       validation: (rule: any) => rule.required(),
+      rows: 4,
     }),
     defineField({
       name: "text",
