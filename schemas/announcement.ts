@@ -49,11 +49,18 @@ export default defineType({
       rows: 4,
     }),
     defineField({
-      name: "button",
-      title: "Button",
-      type: "array",
-      of: [defineArrayMember({ type: "button" })],
-      validation: (rule) => rule.max(1),
+      name: "buttonLabel",
+      title: "Button Label",
+      type: "string",
+      description: "The displayed text of the button.",
+      validation: (rule: any) => rule.required(),
+    }),
+    defineField({
+      name: "buttonHref",
+      title: "Button Link",
+      type: "string",
+      description: "The page or URL to navigate to when clicking on the button.",
+      validation: (rule: any) => rule.required(),
     }),
   ],
   preview: {

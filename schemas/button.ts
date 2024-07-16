@@ -41,7 +41,6 @@ export default defineType({
       initialValue: "none",
       validation: (rule: any) => rule.required(),
     }),
-
     defineField({
       name: "label",
       title: "Label",
