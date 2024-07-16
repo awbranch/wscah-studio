@@ -19,6 +19,7 @@ import mediaCardSet from "./mediaCardSet";
 import menu from "./menu";
 import menuItem from "./menuItem";
 import newsCategory from "./newsCategory";
+import newsletter from "./newsletter";
 import newsStory from "./newsStory";
 import page from "./page";
 import pageBlock from "./pageBlock";
@@ -54,6 +55,7 @@ export const schemaTypes = [
   mediaCardSet,
   menu,
   menuItem,
+  newsletter,
   pageBlock,
   redirect,
   social,

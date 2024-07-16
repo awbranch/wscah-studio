@@ -13,6 +13,11 @@ export default defineType({
   },
   fields: [
     defineField({
+      name: "newsletter",
+      title: "Newsletter",
+      type: "newsletter",
+    }),
+    defineField({
       name: "organization",
       title: "Organization",
       type: "string",
