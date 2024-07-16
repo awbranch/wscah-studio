@@ -4,7 +4,6 @@ import article from "./article";
 import button from "./button";
 import buttonRow from "./buttonRow.js";
 import callToAction from "./callToAction";
-import imageRef from "./imageRef";
 import dataCard from "./dataCard";
 import dataPoint from "./dataPoint";
 import footer from "./footer";
@@ -13,11 +12,14 @@ import hero from "./hero";
 import iconCard from "./iconCard";
 import iframe from "./iframe";
 import imageCard from "./imageCard";
+import imageRef from "./imageRef";
 import latestNews from "./latestNews";
 import link from "./link";
 import mediaCardSet from "./mediaCardSet";
 import menu from "./menu";
 import menuItem from "./menuItem";
+import newsCategory from "./newsCategory";
+import newsStory from "./newsStory";
 import page from "./page";
 import pageBlock from "./pageBlock";
 import redirect from "./redirect";
@@ -27,6 +29,13 @@ import title from "./title";
 import titleCard from "./titleCard";
 
 export const schemaTypes = [
+  settings,
+  header,
+  footer,
+  page,
+  newsCategory,
+  newsStory,
+
   address,
   announcement,
   article,
@@ -35,8 +44,6 @@ export const schemaTypes = [
   callToAction,
   dataCard,
   dataPoint,
-  footer,
-  header,
   hero,
   iconCard,
   iframe,
@@ -47,10 +54,8 @@ export const schemaTypes = [
   mediaCardSet,
   menu,
   menuItem,
-  page,
   pageBlock,
   redirect,
-  settings,
   social,
   title,
   titleCard,

@@ -14,6 +14,12 @@ export default defineType({
     ),
     createImageField({ name: "image", title: "Image", required: true }),
     defineField({
+      name: "eyebrow",
+      title: "Eyebrow",
+      type: "string",
+      description: "An optional eyebrow heading that appears above the title.",
+    }),
+    defineField({
       name: "title",
       title: "Title",
       type: "string",

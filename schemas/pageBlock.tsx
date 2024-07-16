@@ -3,6 +3,7 @@ import BlockPreview from "../components/BlockPreview";
 import { createPaletteField, createNoteField } from "./utils";
 import { colorPalettes } from "./globals";
 import { LuRectangleHorizontal } from "react-icons/lu";
+import { components } from "./components";
 
 export default defineType({
   name: "pageBlock",
@@ -40,17 +41,7 @@ export default defineType({
       name: "components",
       title: "Components",
       type: "array",
-      of: [
-        defineArrayMember({ type: "announcement" }),
-        defineArrayMember({ type: "article" }),
-        defineArrayMember({ type: "buttonRow" }),
-        defineArrayMember({ type: "callToAction" }),
-        defineArrayMember({ type: "hero" }),
-        defineArrayMember({ type: "iframe" }),
-        defineArrayMember({ type: "latestNews" }),
-        defineArrayMember({ type: "mediaCardSet" }),
-        defineArrayMember({ type: "title" }),
-      ],
+      of: components.map((c) => defineArrayMember({ type: c.name })),
     }),
     defineField({
       name: "hidden",

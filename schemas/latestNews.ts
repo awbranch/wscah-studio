@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { createTitleTextBlock, createNoteField, getFirstBlockText } from "./utils";
+import { createNoteField } from "./utils";
 
 import { FaBell as icon } from "react-icons/fa6";
 
