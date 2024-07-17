@@ -1,6 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
-import { validateVectorImageType } from "./utils";
-
+import { createImageField } from "./utils";
 import { FaWindowMinimize as icon } from "react-icons/fa";
 
 export default defineType({
@@ -17,6 +16,7 @@ export default defineType({
       title: "Newsletter",
       type: "newsletter",
     }),
+    createImageField({ name: "missionImage", title: "Mission Image", required: false }),
     defineField({
       name: "organization",
       title: "Organization",
