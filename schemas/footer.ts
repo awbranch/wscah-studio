@@ -25,7 +25,7 @@ export default defineType({
       validation: (rule: any) => rule.required(),
     }),
     defineField({
-      name: "address",
+      name: "addresses",
       title: "Addresses",
       type: "array",
       of: [defineArrayMember({ type: "address" })],
