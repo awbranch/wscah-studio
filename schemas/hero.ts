@@ -70,6 +70,13 @@ export default defineType({
       description: "Optional text that appears below the button can can contain links.",
       of: [createRichTextBlock({ links: true })],
     }),
+    defineField({
+      name: "wallpaper",
+      title: "Wallpaper",
+      type: "boolean",
+      description: "Optionally display the confetti wallpaper behind the hero.",
+      initialValue: false,
+    }),
   ],
   preview: {
     select: { title: "title", image: "image" },
