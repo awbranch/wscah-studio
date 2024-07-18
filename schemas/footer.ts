@@ -53,6 +53,12 @@ export default defineType({
       of: [{ type: "link" }],
       validation: (rule: any) => rule.required(),
     }),
+    defineField({
+      name: "legal",
+      title: "Legal Text",
+      type: "text",
+      rows: 2,
+    }),
   ],
   preview: {
     prepare() {
