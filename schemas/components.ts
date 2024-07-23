@@ -7,16 +7,17 @@ import iframe from "./iframe";
 import latestNews from "./latestNews";
 import mediaCardSet from "./mediaCardSet";
 import title from "./title";
+import componentSetReference from "./componentSetReference";
 
 export const components = [
   announcement,
   article,
   buttonRow,
   callToAction,
+  componentSetReference,
   hero,
   iframe,
   latestNews,
   mediaCardSet,
   title,
 ];
-

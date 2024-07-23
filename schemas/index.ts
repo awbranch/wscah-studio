@@ -4,6 +4,8 @@ import article from "./article";
 import button from "./button";
 import buttonRow from "./buttonRow.js";
 import callToAction from "./callToAction";
+import componentSet from "./componentSet";
+import componentSetReference from "./componentSetReference";
 import dataCard from "./dataCard";
 import dataPoint from "./dataPoint";
 import footer from "./footer";
@@ -34,6 +36,7 @@ export const schemaTypes = [
   header,
   footer,
   page,
+  componentSet,
   newsCategory,
   newsStory,
 
@@ -43,6 +46,7 @@ export const schemaTypes = [
   button,
   buttonRow,
   callToAction,
+  componentSetReference,
   dataCard,
   dataPoint,
   hero,

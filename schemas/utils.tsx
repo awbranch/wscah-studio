@@ -265,14 +265,29 @@ export function createNoteField(icon: IconType, description: string) {
 }
 
 export function getMediaCard(document: any, cardKey: string) {
-  if (document?.blocks) {
-    for (let block of document?.blocks) {
-      if (block?.components) {
-        for (let component of block?.components) {
-          if (component._type === "mediaCardSet" && component.cards) {
-            for (let card of component?.cards) {
-              if (card._key === cardKey) {
-                return component;
+  console.log("document", document?._type);
+  if (document?._type === "componentSet") {
+    if (document?.components) {
+      for (let component of document?.components) {
+        if (component._type === "mediaCardSet" && component.cards) {
+          for (let card of component?.cards) {
+            if (card._key === cardKey) {
+              return component;
+            }
+          }
+        }
+      }
+    }
+  } else if (document?._type === "page") {
+    if (document?.blocks) {
+      for (let block of document?.blocks) {
+        if (block?.components) {
+          for (let component of block?.components) {
+            if (component._type === "mediaCardSet" && component.cards) {
+              for (let card of component?.cards) {
+                if (card._key === cardKey) {
+                  return component;
+                }
               }
             }
           }
