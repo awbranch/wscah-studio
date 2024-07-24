@@ -1,16 +1,16 @@
 import { defineField, defineType } from "sanity";
-import { PiFrameCornersFill as icon } from "react-icons/pi";
+import { TbFileTypeHtml as icon } from "react-icons/tb";
 
 export default defineType({
-  name: "iframe",
-  title: "Iframe",
+  name: "embeddedHtml",
+  title: "Embedded HTML",
   type: "object",
-  description: "A box that contains an iframe.",
+  description: "A box that contains embedded html such as an iFrame or JavaScript.",
   icon,
   fields: [
     defineField({
-      name: "code",
-      title: "Embed Code",
+      name: "html",
+      title: "HTML Code",
       type: "text",
       validation: (rule: any) => rule.required(),
     }),
@@ -19,7 +19,7 @@ export default defineType({
     select: {},
     prepare() {
       return {
-        title: "Iframe",
+        title: "Embedded HTML",
         media: icon,
       };
     },

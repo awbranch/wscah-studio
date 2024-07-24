@@ -8,11 +8,11 @@ import componentSet from "./componentSet";
 import componentSetReference from "./componentSetReference";
 import dataCard from "./dataCard";
 import dataPoint from "./dataPoint";
+import embeddedHtml from "./embeddedHtml";
 import footer from "./footer";
 import header from "./header";
 import hero from "./hero";
 import iconCard from "./iconCard";
-import iframe from "./iframe";
 import imageCard from "./imageCard";
 import imageRef from "./imageRef";
 import latestNews from "./latestNews";
@@ -49,9 +49,9 @@ export const schemaTypes = [
   componentSetReference,
   dataCard,
   dataPoint,
+  embeddedHtml,
   hero,
   iconCard,
-  iframe,
   imageCard,
   imageRef,
   latestNews,
