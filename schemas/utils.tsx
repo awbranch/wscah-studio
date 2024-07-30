@@ -72,6 +72,7 @@ export type CreateRichTextBlockConfig = {
   lists?: boolean;
   decorators?: boolean;
   links?: boolean;
+  highlighters?: boolean;
 };
 
 export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
@@ -135,6 +136,19 @@ export function createRichTextBlock(config: CreateRichTextBlockConfig = {}) {
         { title: "Bold", value: "strong" },
         { title: "Italic", value: "em" },
       ],
+    );
+  }
+
+  if (config.all || config.highlighters) {
+    decorators.push(
+      ...highlightColors.map((h) => ({
+        title: h.title,
+        value: "highlight-" + h.value,
+        icon: PiHighlighterFill({ color: h.background }),
+        component: ({ children }: any) => (
+          <span style={{ backgroundColor: h.background, color: h.color }}>{children}</span>
+        ),
+      })),
     );
   }
 
