@@ -1,5 +1,10 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { createTitleTextBlock, createNoteField, getFirstBlockText, createImageField } from "./utils";
+import {
+  createTitleTextBlock,
+  createNoteField,
+  getFirstBlockText,
+  createImageField,
+} from "./utils";
 import { FaAddressCard as icon } from "react-icons/fa";
 
 export default defineType({
@@ -56,13 +61,19 @@ export default defineType({
       of: [defineArrayMember({ type: "button" })],
       validation: (rule) => rule.max(1),
     }),
+    defineField({
+      name: "buttons",
+      title: "Buttons",
+      type: "array",
+      of: [defineArrayMember({ type: "button" })],
+    }),
   ],
   preview: {
-    select: { title: "title", image: "image" },
-    prepare({ title, image }) {
+    select: { title: "title", image: "image", orientation: "orientation" },
+    prepare({ title, image, orientation }) {
       return {
         title: "Call to Action",
-        subtitle: getFirstBlockText(title),
+        subtitle: `${orientation == "left" ? "Image Left" : "Image Right"} - ${getFirstBlockText(title)}`,
         media: image,
       };
     },

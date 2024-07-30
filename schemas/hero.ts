@@ -16,7 +16,7 @@ export default defineType({
     createNoteField(
       icon,
       "The Hero is a large component that typically sits at the top of the page. It has very large text and a set " +
-        "of images and a button. Typically it would be at the top of the homepage and other landing pages",
+        "of images and buttons. Typically it would be at the top of the homepage and other landing pages",
     ),
     defineField({
       name: "title",
@@ -57,11 +57,10 @@ export default defineType({
       of: [defineArrayMember({ type: "imageRef" })],
     }),
     defineField({
-      name: "button",
-      title: "Button",
+      name: "buttons",
+      title: "Buttons",
       type: "array",
       of: [defineArrayMember({ type: "button" })],
-      validation: (rule) => rule.max(1),
     }),
     defineField({
       name: "text",
