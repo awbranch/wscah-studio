@@ -46,7 +46,6 @@ export default defineType({
       type: "array",
       description: "The title of the Call to Action.",
       of: [createTitleTextBlock()],
-      validation: (rule: any) => rule.required(),
     }),
     defineField({
       name: "text",
@@ -73,7 +72,7 @@ export default defineType({
     prepare({ title, image, orientation }) {
       return {
         title: "Call to Action",
-        subtitle: `${orientation == "left" ? "Image Left" : "Image Right"} - ${getFirstBlockText(title)}`,
+        subtitle: `${orientation == "left" ? "Image Left" : "Image Right"} - ${title ? getFirstBlockText(title) : "No title"}`,
         media: image,
       };
     },

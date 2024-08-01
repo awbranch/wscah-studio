@@ -25,6 +25,7 @@ import newsletter from "./newsletter";
 import newsStory from "./newsStory";
 import page from "./page";
 import pageBlock from "./pageBlock";
+import pageHeader from "./pageHeader";
 import redirect from "./redirect";
 import settings from "./settings";
 import social from "./social";
@@ -61,6 +62,7 @@ export const schemaTypes = [
   menuItem,
   newsletter,
   pageBlock,
+  pageHeader,
   redirect,
   social,
   title,

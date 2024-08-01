@@ -9,6 +9,11 @@ export default defineType({
   icon,
   fieldsets: [
     {
+      name: "header",
+      title: "Page Header",
+      options: { collapsible: true, collapsed: true },
+    },
+    {
       name: "advanced",
       title: "Advanced Options",
       options: { collapsible: true, collapsed: true },
@@ -52,6 +57,20 @@ export default defineType({
       description: "The page title to be shown in the browser tab and used for SEO.",
     }),
     defineField({
+      name: "showHeader",
+      title: "Show Header",
+      type: "boolean",
+      description: "Display a header at the top of the page.",
+    }),
+    defineField({
+      name: "header",
+      title: "Page Header",
+      type: "pageHeader",
+      description:
+        "A header displayed at the top of the page that introduces the rest of the page content.",
+      hidden: ({ document }) => !document?.showHeader,
+    }),
+    defineField({
       name: "blocks",
       title: "Blocks",
       type: "array",
@@ -76,7 +95,7 @@ export default defineType({
       fieldset: "advanced",
     }),
     defineField({
-      name: "description",
+      name: "metaDescription",
       title: "Search Engine Description",
       type: "text",
       description:
