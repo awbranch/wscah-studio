@@ -4,7 +4,7 @@ import { components } from "./components";
 
 export default defineType({
   name: "componentSet",
-  title: "Component Set",
+  title: "Component Sets",
   description: "A set of components that is sharable",
   type: "document",
   icon,

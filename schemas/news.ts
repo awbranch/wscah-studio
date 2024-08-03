@@ -1,27 +1,22 @@
-import { defineArrayMember, defineField, defineType } from "sanity";
-import { FaNewspaper as icon } from "react-icons/fa6";
+import { defineField, defineType } from "sanity";
+import { FiFileText as icon } from "react-icons/fi";
 import { createImageField, createRichTextBlock } from "./utils";
-import { components } from "./components";
 
 export default defineType({
-  name: "newsStory",
-  title: "News Story",
+  name: "news",
+  title: "News",
   type: "document",
   icon,
   fields: [
     defineField({
-      title: "Categories",
-      name: "categories",
-      type: "array",
-      of: [
-        defineArrayMember({
-          type: "reference",
-          to: [{ type: "newsCategory" }],
-          options: {
-            disableNew: true,
-          },
-        }),
-      ],
+      title: "Category",
+      name: "category",
+      type: "reference",
+      to: [{ type: "newsCategory" }],
+      options: {
+        disableNew: true,
+      },
+      validation: (rule: any) => rule.required(),
     }),
     defineField({
       name: "date",
@@ -61,7 +56,7 @@ export default defineType({
       title: "Hidden",
       type: "boolean",
       description:
-        "You can hide a news story rather than deleting if if you want to not show it temporarily",
+        "You can hide a news rather than deleting if if you want to not show it temporarily",
       initialValue: false,
     }),
     defineField({
@@ -97,17 +92,31 @@ export default defineType({
     select: {
       title: "title",
       date: "date",
+      category: "category.label",
       hidden: "hidden",
     },
-    prepare({ title, date, hidden }) {
-      const parts = date?.split("-");
-      let subtitle = date ? `${parts[1]}/${parts[2]}/${parts[0]}` : "date not set";
+    prepare({ title, date, hidden, category }) {
+      let atitle = "";
+      if (category) {
+        atitle = category;
+      }
+      if (title) {
+        if (category) {
+          atitle += ": ";
+        }
+        atitle += title;
+      }
+
+      let subtitle = "";
       if (hidden) {
-        subtitle += " - hidden";
+        subtitle = "hidden";
+      } else if (date) {
+        const parts = date.split("-");
+        subtitle += `${parts[1]}/${parts[2]}/${parts[0]}`;
       }
 
       return {
-        title,
+        title: atitle,
         subtitle,
         media: icon,
       };

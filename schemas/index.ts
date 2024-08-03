@@ -20,15 +20,18 @@ import link from "./link";
 import mediaCardSet from "./mediaCardSet";
 import menu from "./menu";
 import menuItem from "./menuItem";
+import news from "./news";
 import newsCategory from "./newsCategory";
 import newsletter from "./newsletter";
-import newsStory from "./newsStory";
 import page from "./page";
 import pageBlock from "./pageBlock";
 import pageHeader from "./pageHeader";
+import press from "./press";
 import redirect from "./redirect";
 import settings from "./settings";
 import social from "./social";
+import team from "./team";
+import teamMember from "./teamMember";
 import title from "./title";
 import titleCard from "./titleCard";
 
@@ -38,8 +41,8 @@ export const schemaTypes = [
   footer,
   page,
   componentSet,
+  news,
   newsCategory,
-  newsStory,
 
   address,
   announcement,
@@ -63,8 +66,11 @@ export const schemaTypes = [
   newsletter,
   pageBlock,
   pageHeader,
+  press,
   redirect,
   social,
+  team,
+  teamMember,
   title,
   titleCard,
 ];

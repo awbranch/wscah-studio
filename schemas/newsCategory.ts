@@ -1,34 +1,32 @@
-import { defineField, defineType } from 'sanity';
-import { FaTag as icon } from 'react-icons/fa6';
+import { defineField, defineType } from "sanity";
+import { TbHierarchy as icon } from "react-icons/tb";
 
 export default defineType({
-  name: 'newsCategory',
-  title: 'News Category',
-  type: 'document',
+  name: "newsCategory",
+  title: "News Categories",
+  type: "document",
   icon,
   fields: [
     defineField({
-      name: 'label',
-      title: 'Label',
-      type: 'string',
+      name: "label",
+      title: "Label",
+      type: "string",
       validation: (rule: any) => rule.required(),
     }),
     defineField({
-      name: 'value',
-      title: 'Value',
-      type: 'string',
+      name: "value",
+      title: "Value",
+      type: "string",
       validation: (rule: any) => rule.required(),
     }),
   ],
   preview: {
     select: {
-      label: 'label',
-      value: 'value',
+      label: "label",
     },
-    prepare({ label, value }) {
+    prepare({ label }) {
       return {
         title: label,
-        subtitle: value,
         media: icon,
       };
     },
