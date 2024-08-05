@@ -31,7 +31,7 @@ export default defineType({
       title: "Components",
       type: "array",
       of: components
-        .filter((c) => c.name !== "componentSetReference")
+        .filter((c) => c.name !== "componentSetReference" && c.name !== "tabBar") // Don't allow nested component sets or tab bars
         .map((c) => defineArrayMember({ type: c.name })),
     }),
   ],

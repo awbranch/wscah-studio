@@ -30,7 +30,10 @@ import press from "./press";
 import redirect from "./redirect";
 import settings from "./settings";
 import social from "./social";
+import tabBar from "./tabBar";
+import tabBarItem from "./tabBarItem";
 import team from "./team";
+import teamList from "./teamList";
 import teamMember from "./teamMember";
 import title from "./title";
 import titleCard from "./titleCard";
@@ -69,7 +72,10 @@ export const schemaTypes = [
   press,
   redirect,
   social,
+  tabBar,
+  tabBarItem,
   team,
+  teamList,
   teamMember,
   title,
   titleCard,
